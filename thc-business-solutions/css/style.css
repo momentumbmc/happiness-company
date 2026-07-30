@@ -669,11 +669,6 @@ textarea.form-input { min-height: 100px; resize: vertical; }
   .hero-image-wrap img { height: 300px; }
 }
 
-@media (max-width: 480px) {
-  .hero-visual { min-height: 180px; }
-  .mesh-hero--full .hero-text-col .container { padding-left: var(--space-lg); }
-}
-
 @media (max-width: 768px) {
   .display-xxl { font-size: 36px; letter-spacing: -0.9px; }
   .display-xl { font-size: 32px; letter-spacing: -0.64px; }
@@ -713,8 +708,41 @@ textarea.form-input { min-height: 100px; resize: vertical; }
 }
 
 @media (max-width: 480px) {
+  .hero-visual { min-height: 180px; }
+  .mesh-hero--full .hero-text-col .container { padding-left: var(--space-lg); }
   .display-xxl { font-size: 28px; letter-spacing: -0.7px; }
   .display-xl { font-size: 26px; letter-spacing: -0.52px; }
   .container { padding: 0 var(--space-lg); }
   .stat-value { font-size: 28px; }
 }
+
+@media (max-width: 380px) {
+  .btn { white-space: normal; font-size: 14px; padding: 8px 16px; }
+  .display-xxl { font-size: 24px; letter-spacing: -0.6px; }
+  .display-xl { font-size: 22px; letter-spacing: -0.44px; }
+  .container { padding: 0 var(--space-md); }
+  .hero-visual { min-height: 160px; }
+}
+
+/* --- Utilities & overrides --- */
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.skip-link {
+  position: fixed; top: -100%; left: var(--space-md); z-index: 9999;
+  padding: 8px 16px; background: var(--ink); color: var(--on-primary);
+  font-size: 14px; font-weight: 500; border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  text-decoration: none; transition: top 0.2s var(--ease-out);
+}
+.skip-link:focus { top: 0; outline: none; }
+.nav-logo img { width: auto; }
+.ink-secondary { color: var(--ink-secondary); }
+.mt-lg { margin-top: var(--space-lg); }
+.mt-xl { margin-top: var(--space-xl); }
+.mt-xxl { margin-top: var(--space-xxl); }
+.flex-wrap-gap-xl { display: flex; gap: var(--space-xl); flex-wrap: wrap; }
+.mockup-value--accent { color: var(--primary); }
+.hero-subhead--split { max-width: 520px; }
+.footer .nav-logo { margin-bottom: var(--space-sm); }
+.micro-cap--centered { text-align: center; color: var(--ink-mute); margin-bottom: var(--space-xl); }
+html { scroll-padding-top: calc(var(--nav-height) + var(--space-xl)); }
+
+

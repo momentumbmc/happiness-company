@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
       link.addEventListener('click', function () {
         navLinks.classList.remove('open');
         toggle.setAttribute('aria-expanded', 'false');
-        var icon = toggle.querySelector('svg');
+        const icon = toggle.querySelector('svg');
         if (icon) {
           icon.innerHTML = '<line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>';
         }
@@ -42,17 +42,17 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // ---- Active nav link ----
-  var currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav-links a').forEach(function (link) {
     if (link.getAttribute('href') === currentPath) {
       link.classList.add('active');
+      link.setAttribute('aria-current', 'page');
     }
   });
 
-  // ---- Intersection Observer: fade-in + stagger + counter ----
-  var observerOptions = { threshold: 0.08, rootMargin: '0px 0px -30px 0px' };
+  const observerOptions = { threshold: 0.08, rootMargin: '0px 0px -30px 0px' };
 
-  var revealObserver = new IntersectionObserver(function (entries) {
+  const revealObserver = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
         // Individual fade elements
@@ -85,16 +85,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // ---- Counter animation ----
   function animateCounter(el) {
-    var target = parseInt(el.dataset.target, 10) || 0;
-    var suffix = el.dataset.suffix || '';
-    var duration = Math.min(2000, Math.max(800, target * 3));
-    var start = performance.now();
+    const target = parseInt(el.dataset.target, 10) || 0;
+    const suffix = el.dataset.suffix || '';
+    const duration = Math.min(2000, Math.max(800, target * 3));
+    const start = performance.now();
 
     function step(now) {
-      var progress = Math.min((now - start) / duration, 1);
-      // ease-out cubic
-      var eased = 1 - Math.pow(1 - progress, 3);
-      var current = Math.round(eased * target);
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(eased * target);
       el.textContent = current.toLocaleString() + suffix;
       if (progress < 1) {
         requestAnimationFrame(step);
@@ -111,15 +110,14 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // ---- Gradient mesh parallax on scroll ----
-  var meshBg = document.querySelector('.mesh-bg');
+  const meshBg = document.querySelector('.mesh-bg');
   if (meshBg) {
     window.addEventListener('scroll', function () {
-      var scrollY = window.pageYOffset;
-      var hero = meshBg.closest('.mesh-hero');
+      const hero = meshBg.closest('.mesh-hero');
       if (hero) {
-        var rect = hero.getBoundingClientRect();
-        var heroTop = rect.top + window.pageYOffset;
-        var relativeScroll = window.pageYOffset - heroTop;
+        const rect = hero.getBoundingClientRect();
+        const heroTop = rect.top + window.pageYOffset;
+        const relativeScroll = window.pageYOffset - heroTop;
         if (relativeScroll > -hero.offsetHeight && relativeScroll < hero.offsetHeight) {
           meshBg.style.transform = 'translateY(' + (relativeScroll * 0.15) + 'px)';
         }
@@ -127,21 +125,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { passive: true });
   }
 
-  // ---- Button hover sound (visual ripple) ----
   document.querySelectorAll('.btn').forEach(function (btn) {
     btn.addEventListener('mousemove', function (e) {
-      var rect = btn.getBoundingClientRect();
-      var x = e.clientX - rect.left;
-      var y = e.clientY - rect.top;
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
       btn.style.setProperty('--x', x + 'px');
       btn.style.setProperty('--y', y + 'px');
     });
   });
-
-  // ---- Lazy load images (native + fallback) ----
-  if ('loading' in HTMLImageElement.prototype) {
-    document.querySelectorAll('img[loading="lazy"]').forEach(function (img) {
-      img.src = img.dataset.src || img.src;
-    });
-  }
 });

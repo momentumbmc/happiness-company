@@ -125,6 +125,38 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { passive: true });
   }
 
+  // ---- Tabbed industry fold ----
+  const fold = document.querySelector('.industry-fold');
+  if (fold) {
+    const tabs = Array.prototype.slice.call(fold.querySelectorAll('.tab'));
+    const panels = Array.prototype.slice.call(fold.querySelectorAll('.panel'));
+
+    function selectTab(index) {
+      tabs.forEach(function (tab, i) {
+        const active = i === index;
+        tab.setAttribute('aria-selected', active ? 'true' : 'false');
+        tab.tabIndex = active ? 0 : -1;
+        panels[i].classList.toggle('is-active', active);
+      });
+    }
+
+    tabs.forEach(function (tab, index) {
+      tab.addEventListener('click', function () { selectTab(index); });
+      tab.addEventListener('keydown', function (e) {
+        let next = -1;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { next = (index + 1) % tabs.length; }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { next = (index - 1 + tabs.length) % tabs.length; }
+        if (e.key === 'Home') { next = 0; }
+        if (e.key === 'End') { next = tabs.length - 1; }
+        if (next >= 0) {
+          e.preventDefault();
+          selectTab(next);
+          tabs[next].focus();
+        }
+      });
+    });
+  }
+
   document.querySelectorAll('.btn').forEach(function (btn) {
     btn.addEventListener('mousemove', function (e) {
       const rect = btn.getBoundingClientRect();

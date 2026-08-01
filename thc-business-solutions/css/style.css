@@ -325,15 +325,38 @@ a:hover { color: var(--primary-deep); }
 
 /* --- Cards --- */
 .card {
+  position: relative;
   background: var(--canvas); border-radius: var(--radius-lg); padding: var(--space-xxl);
   border: 1px solid var(--hairline);
   transition: box-shadow 0.4s var(--ease-out), transform 0.4s var(--ease-out);
   will-change: transform;
 }
 
+.css-11x1h9e {
+  position: absolute; top: 50%; right: var(--space-xl); transform: translateY(-50%);
+  max-width: 50px; height: auto; display: block;
+}
+
 .card:hover {
   box-shadow: var(--shadow-md); transform: translateY(-3px);
 }
+
+.card--with-icon { padding-right: 100px; }
+
+/* --- Glow border card (two-colour gradient edge, mouse-follow) --- */
+.glow-card { position: relative; }
+.glow-card::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
+  background: radial-gradient(140px circle at var(--mx, 50%) var(--my, 50%), var(--brand-primary), var(--brand-accent));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: 0; transition: opacity 0.3s var(--ease-out);
+  pointer-events: none; z-index: 1;
+}
+.glow-card:hover::before { opacity: 1; }
+.glow-card:hover { border-color: transparent; }
 
 .card-cream { background: var(--canvas-cream); }
 
@@ -753,6 +776,8 @@ textarea.form-input { min-height: 100px; resize: vertical; }
   .mesh-hero { padding-top: calc(var(--nav-height) + var(--space-xxl)); padding-bottom: var(--space-xxl); }
   .mesh-hero h1 { max-width: 100%; }
   .card { padding: var(--space-xl); }
+  .card--with-icon { padding-right: var(--space-xl); }
+  .card--with-icon .css-11x1h9e { position: static; transform: none; margin-bottom: var(--space-md); }
   .phase-item { padding: var(--space-lg); }
   .step-card { padding: var(--space-xl); }
   .value-card { padding: var(--space-xl); }

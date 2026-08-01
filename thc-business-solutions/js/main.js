@@ -166,4 +166,12 @@ document.addEventListener('DOMContentLoaded', function () {
       btn.style.setProperty('--y', y + 'px');
     });
   });
+
+  document.querySelectorAll('.glow-card').forEach(function (card) {
+    card.addEventListener('mousemove', function (e) {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+    });
+  });
 });

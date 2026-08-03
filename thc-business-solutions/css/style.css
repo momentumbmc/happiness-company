@@ -46,6 +46,7 @@
   --canvas: #ffffff;
   --canvas-soft: #f6f9fc;
   --canvas-cream: #f5e9d4;
+  --canvas-glass: rgba(255, 255, 255, 0.94);
   --hairline: #dce3eb;
   --hairline-input: #8aabc4;
   --font-sans: 'IBM Plex Sans', 'SF Pro Display', system-ui, -apple-system, sans-serif;
@@ -758,7 +759,9 @@ textarea.form-input { min-height: 100px; resize: vertical; }
   .hero-split { grid-template-columns: 1fr; gap: var(--space-xxl); }
   .hero-split--full { gap: 0; min-height: auto; }
   .mesh-hero--full .hero-text-col .container { padding-left: var(--space-xl); padding-right: var(--space-xl); }
-  .hero-visual { min-height: 200px; order: -1; }
+  .hero-image-wrap, .hero-visual, .split-content .split-image { order: -1; }
+  .hero-visual { min-height: 200px; }
+  .hero-visual img { position: static; height: auto; }
   .hero-text-col { padding: var(--space-xxl) 0; }
   .split-content { grid-template-columns: 1fr; gap: var(--space-xxl); }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-xl); }
@@ -802,8 +805,9 @@ textarea.form-input { min-height: 100px; resize: vertical; }
   .tabs { gap: var(--space-xl); overflow-x: auto; scrollbar-width: none; }
   .tabs::-webkit-scrollbar { display: none; }
   .tab { white-space: nowrap; }
-  .panel > img { height: 320px; }
-  .panel-card { top: var(--space-md); left: var(--space-md); right: var(--space-md); width: auto; max-width: none; height: auto; transform: none; justify-content: flex-start; padding: var(--space-xl); }
+  .panel.is-active { display: flex; align-items: center; }
+  .panel > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .panel-card { position: static; width: calc(100% - var(--space-xxl)); max-width: none; height: auto; justify-content: center; margin: var(--space-xl) auto; padding: var(--space-xl); background: var(--canvas-glass); }
   .stat-value { font-size: 32px; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-lg); }
   .logo-track { gap: var(--space-xl); }
@@ -818,7 +822,6 @@ textarea.form-input { min-height: 100px; resize: vertical; }
   .display-xl { font-size: 26px; letter-spacing: -0.52px; }
   .container { padding: 0 var(--space-lg); }
   .stat-value { font-size: 28px; }
-  .panel > img { height: 240px; }
   .panel-card h3 { font-size: 20px; }
 }
 

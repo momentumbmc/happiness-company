@@ -336,6 +336,11 @@ a:hover { color: var(--primary-deep); }
 .section-body { max-width: 680px; color: var(--ink-secondary); margin-bottom: var(--space-xl); }
 .section-dark .section-body { color: var(--on-dark-secondary); }
 
+/* --- Business Wireframe (About) --- */
+.wireframe-section { overflow: hidden; }
+.wireframe-figure { margin-top: var(--space-xl); }
+.wireframe-figure svg { display: block; width: 100%; height: auto; font-family: var(--font-sans); }
+
 /* --- Split Content Layout (image + text) --- */
 .split-content {
   display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-huge);
@@ -1187,6 +1192,9 @@ textarea.form-input { min-height: 100px; resize: vertical; }
   .sub-dialog--branded .tradeschool-logo { height: 20px; }
   .sub-dialog__close { width: 40px; height: 40px; }
   .mesh-bg::before { animation: none; }
+  .wireframe-figure { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .wireframe-figure::-webkit-scrollbar { display: none; }
+  .wireframe-figure svg { min-width: 760px; }
 }
 
 @media (max-width: 480px) {

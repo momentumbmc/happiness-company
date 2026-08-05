@@ -126,8 +126,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // ---- Business wireframe lazy animation (starts on scroll into view) ----
-  const wireframeSvg = document.querySelector('.wireframe-svg');
-  if (wireframeSvg) {
+  const wireframeSvgs = document.querySelectorAll('.wireframe-svg');
+  wireframeSvgs.forEach(function (wireframeSvg) {
     const wireframeObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }, { threshold: 0.2 });
     wireframeObserver.observe(wireframeSvg);
-  }
+  });
 
   // ---- Tabbed industry fold ----
   const fold = document.querySelector('.industry-fold');

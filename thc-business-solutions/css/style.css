@@ -130,14 +130,14 @@ a {
 a:hover { color: var(--primary-deep); }
 
 /* --- Typography --- */
-.display-xxl { font-size: 56px; font-weight: 300; line-height: 1.03; letter-spacing: -1.4px; }
+.display-xxl { font-size: 56px; font-weight: 300; line-height: 1.08; letter-spacing: -1.4px; }
 .display-xl { font-size: 48px; font-weight: 300; line-height: 1.15; letter-spacing: -0.96px; }
-.heading-lg { font-size: 22px; font-weight: 500; line-height: 1.3; letter-spacing: -0.22px; }
-.heading-md { font-size: 20px; font-weight: 500; line-height: 1.3; letter-spacing: -0.2px; }
+.heading-lg { font-size: 24px; font-weight: 500; line-height: 1.3; letter-spacing: -0.22px; }
+.heading-md { font-size: 18px; font-weight: 500; line-height: 1.3; letter-spacing: -0.2px; }
 .body-lg { font-size: 17px; font-weight: 400; line-height: 1.7; letter-spacing: 0; }
 .body-md { font-size: 16px; font-weight: 400; line-height: 1.7; letter-spacing: 0; }
-.caption { font-size: 13px; font-weight: 450; line-height: 1.5; letter-spacing: -0.39px; }
-.micro-cap { font-size: 13px; font-weight: 500; line-height: 1.15; letter-spacing: 0.1px; text-transform: uppercase; color: var(--micro-cap-color); }
+.caption { font-size: 13px; font-weight: 400; line-height: 1.5; letter-spacing: 0; }
+.micro-cap { font-size: 13px; font-weight: 500; line-height: 1.15; letter-spacing: 0.06em; text-transform: uppercase; color: var(--micro-cap-color); }
 .micro-cap::after { content: ''; display: block; width: 25px; height: 3px; margin-top: 4px; background: var(--micro-cap-underline); }
 .section-dark .micro-cap, .sub-dialog__head .micro-cap { --micro-cap-color: var(--on-primary); --micro-cap-underline: var(--on-primary); }
 
@@ -195,7 +195,7 @@ a:hover { color: var(--primary-deep); }
   font-family: var(--font-sans); font-size: 16px; font-weight: 500; line-height: 1;
   letter-spacing: 0; height: var(--btn-height); padding: 0 24px;
   border-radius: var(--radius-btn);
-  border: none; cursor: pointer; transition: all 0.25s var(--ease-out);
+  border: none; cursor: pointer; transition: background 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out), transform 0.25s var(--ease-out), color 0.25s var(--ease-out);
   text-decoration: none; white-space: nowrap; position: relative; overflow: hidden;
 }
 
@@ -249,7 +249,7 @@ a:hover { color: var(--primary-deep); }
     radial-gradient(ellipse 35% 35% at 60% 65%, var(--ruby) 0%, transparent 45%),
     radial-gradient(ellipse 30% 30% at 80% 50%, var(--mesh-coral) 0%, transparent 40%);
   filter: blur(70px); opacity: 0.55;
-  animation: mesh-shift 25s ease-in-out infinite alternate;
+  animation: mesh-shift 12s ease-in-out 1;
   will-change: transform;
 }
 
@@ -261,10 +261,10 @@ a:hover { color: var(--primary-deep); }
 }
 
 .mesh-hero > .container { position: relative; z-index: 1; }
-.mesh-hero h1 { max-width: 850px; margin-bottom: var(--space-xl); }
+.mesh-hero h1 { max-width: 760px; margin-bottom: var(--space-xl); }
 
 .mesh-hero .hero-subhead {
-  max-width: 640px; color: var(--ink-secondary); margin-bottom: var(--space-xxl);
+  max-width: 680px; color: var(--ink-secondary); margin-bottom: var(--space-xxl);
 }
 
 .mesh-hero .hero-cta-support { margin-top: var(--space-md); font-size: 13px; color: var(--ink-mute); }
@@ -360,11 +360,11 @@ a:hover { color: var(--primary-deep); }
 }
 
 /* --- Sections --- */
-.section { padding: var(--space-huge) 0; }
+.section { padding: 96px 0; }
 .section-soft { background: var(--canvas-soft); }
 .section-dark { background: var(--brand-dark-900); color: var(--on-primary); }
 .section-label { margin-bottom: var(--space-lg); }
-.section-title { margin-bottom: var(--space-xl); max-width: 720px; }
+.section-title { margin-bottom: var(--space-xl); max-width: 760px; }
 .section-body { max-width: 680px; color: var(--ink-secondary); margin-bottom: var(--space-xl); }
 .section-dark .section-body { color: var(--on-dark-secondary); }
 
@@ -896,7 +896,7 @@ a:hover { color: var(--primary-deep); }
 .panel.is-active { display: block; animation: panel-in 0.45s var(--ease-out); }
 
 .panel > img {
-  display: block; width: 100%; height: 440px; object-fit: cover;
+  display: block; width: 100%; height: 380px; object-fit: cover;
   border-radius: var(--radius-img);
 }
 
@@ -904,14 +904,14 @@ a:hover { color: var(--primary-deep); }
   position: absolute; top: 50%; left: var(--space-xl);
   transform: translateY(-50%);
   background: var(--canvas);
-  width: 48%; max-width: 520px; height: 62%;
+  width: 48%; max-width: 520px; min-height: 56%;
   display: flex; flex-direction: column; justify-content: center;
-  padding: var(--space-md) var(--space-lg);
+  padding: var(--space-xl) var(--space-xxl);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
 }
 
-.panel-card h3 { font-size: 28px; line-height: 1.25; margin-bottom: var(--space-md); }
+.panel-card h3 { font-size: 24px; line-height: 1.25; margin-bottom: var(--space-md); }
 .panel-card h3 .text-primary { color: var(--brand-primary); }
 .panel-card p { color: var(--ink-secondary); margin-bottom: var(--space-md); }
 .panel-card .btn { align-self: flex-start; padding: 0 16px; }
@@ -953,7 +953,7 @@ a:hover { color: var(--primary-deep); }
 
 .fold-arrow:active { background: var(--brand-primary); color: var(--on-primary); }
 
-.industry-fold:hover .fold-arrow svg { animation: fold-arrow-nudge 1.6s var(--ease-out) infinite; }
+.industry-fold:hover .fold-arrow svg { animation: fold-arrow-nudge 1.6s var(--ease-out) 2; }
 
 @keyframes fold-arrow-nudge {
   0%, 100% { transform: translateX(0); }
@@ -974,6 +974,7 @@ a:hover { color: var(--primary-deep); }
 .stat-value {
   font-size: 42px; font-weight: 300; line-height: 1; letter-spacing: -1px;
   color: var(--primary); margin-bottom: var(--space-sm);
+  font-variant-numeric: tabular-nums; font-feature-settings: 'tnum' on;
 }
 
 .stat-label { font-size: 14px; color: var(--ink-mute); line-height: 1.4; }
@@ -1249,7 +1250,7 @@ a:hover { color: var(--primary-deep); }
     background: var(--canvas); flex-direction: column; padding: var(--space-xl);
     gap: var(--space-lg); box-shadow: var(--shadow-md);
     transform: translateY(-100%); opacity: 0; pointer-events: none;
-    transition: all 0.35s var(--ease-out);
+    transition: transform 0.35s var(--ease-out), opacity 0.35s var(--ease-out);
   }
 
   .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: auto; }

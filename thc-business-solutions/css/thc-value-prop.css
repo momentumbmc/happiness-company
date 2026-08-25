@@ -11,10 +11,9 @@
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   grid-template-areas:
-    "decor-top decor-top"
+    "decor-top ."
     "image content"
-    "border border"
-    "decor-bottom decor-bottom";
+    "border border";
   gap: 0;
   background: var(--canvas);
   border: 1px solid var(--hairline);
@@ -29,15 +28,14 @@
 .thc-lvp--flipped {
   grid-template-columns: 0.85fr 1.15fr;
   grid-template-areas:
-    "decor-top decor-top"
+    ". decor-top"
     "content image"
-    "border border"
-    "decor-bottom decor-bottom";
+    "border border";
 }
 
 .thc-lvp__decor-top {
   grid-area: decor-top;
-  height: 8px;
+  height: 5px;
   background: var(--lvp-brown);
   border-radius: var(--lvp-radius) var(--lvp-radius) 0 0;
 }
@@ -60,15 +58,6 @@
   grid-area: border;
   height: 1px;
   background: var(--hairline);
-}
-
-.thc-lvp__decor-bottom {
-  grid-area: decor-bottom;
-  height: 6px;
-  width: 96px;
-  background: var(--lvp-brown-light);
-  border-radius: 0 0 var(--lvp-radius) 0;
-  justify-self: end;
 }
 
 .thc-lvp__content {
@@ -157,8 +146,7 @@
       "decor-top"
       "image"
       "content"
-      "border"
-      "decor-bottom";
+      "border";
   }
   .thc-lvp__image img { min-height: 340px; max-height: 420px; }
   .thc-lvp--flipped .thc-lvp__image { order: 0; }

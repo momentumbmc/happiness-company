@@ -4,6 +4,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
 @import url('thc-value-prop.css');
+@import url('jpm-hero.css');
 
 :root {
   /* ==============================================================
@@ -894,7 +895,7 @@ a:hover { color: var(--primary-deep); }
 }
 
 .panel-card h3 { font-size: 24px; line-height: 1.25; margin-bottom: var(--space-md); }
-.panel-card h3 .text-primary { color: var(--brand-primary); }
+.panel-card h3 .text-primary { color: #6B4A2B; }
 .panel-card p { color: var(--ink-secondary); margin-bottom: var(--space-md); }
 .panel-card .btn { align-self: flex-start; padding: 0 16px; }
 

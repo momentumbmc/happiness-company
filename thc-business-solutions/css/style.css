@@ -369,28 +369,15 @@ a:hover { color: var(--primary-deep); }
 .section-body { max-width: 680px; color: var(--ink-secondary); margin-bottom: var(--space-xl); }
 .section-dark .section-body { color: var(--on-dark-secondary); }
 
-/* --- Business Wireframe (About) --- */
-.wireframe-section { overflow: hidden; }
-.wireframe-figure { margin-top: var(--space-xl); }
+/* --- Business Wireframe (About) — Tier 1 light-ground hairline card system --- */
+.wireframe-section { overflow: hidden; background: var(--canvas); }
+.wireframe-section.wireframe--tier1 { background: var(--canvas); }
+.wireframe-section.wireframe--tier1 .micro-cap { --micro-cap-color: var(--ink-mute); --micro-cap-underline: var(--primary); }
+.wireframe-section.wireframe--tier1 .section-title { color: var(--ink); }
+.wireframe-section.wireframe--tier1 .section-body { color: var(--ink-secondary); }
+.wireframe-figure { margin-top: 48px; }
 .wireframe-figure svg { display: block; width: 100%; height: auto; font-family: var(--font-sans); }
 .wireframe-figure .wireframe-mobile { display: none; }
-
-/* Wireframe palette -> design tokens (SVG presentation attrs accept CSS var()) */
-.wireframe-figure svg [fill="#1868DB"] { fill: var(--primary); }
-.wireframe-figure svg [stroke="#1868DB"] { stroke: var(--primary); }
-.wireframe-figure svg [fill="#2C7FF0"] { fill: var(--primary-bright); }
-.wireframe-figure svg [stroke="#2C7FF0"] { stroke: var(--primary-bright); }
-.wireframe-figure svg [fill="#4E8FE3"] { fill: var(--primary-soft); }
-.wireframe-figure svg [stroke="#4E8FE3"] { stroke: var(--primary-soft); }
-.wireframe-figure svg [fill="#9DC8FF"] { fill: var(--sky-soft); }
-.wireframe-figure svg [stroke="#9DC8FF"] { stroke: var(--sky-soft); }
-.wireframe-figure svg [fill="#0E3556"] { fill: var(--brand-navy); }
-.wireframe-figure svg [stroke="#0E3556"] { stroke: var(--brand-navy); }
-.wireframe-figure svg [fill="#071F3B"] { fill: var(--brand-core); }
-.wireframe-figure svg [fill="#EAF0F9"] { fill: var(--on-dark-chip-text); }
-.wireframe-figure svg [fill="#FFF"] { fill: var(--on-primary); }
-.wireframe-figure svg [fill="#FFFFFF"] { fill: var(--on-primary); }
-.wireframe-figure svg [stop-color="#9DC8FF"] { stop-color: var(--sky-soft); }
 
 /* --- Cards --- */
 .card {
@@ -1354,65 +1341,18 @@ a:hover { color: var(--primary-deep); }
 .micro-cap--centered::after { margin: 4px auto 0; }
 html { scroll-padding-top: calc(var(--nav-height) + var(--space-xl)); }
 
-/* --- About Wireframe SVG --- */
-@keyframes drawLine {
-  to { stroke-dashoffset: 0; }
-}
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-.wireframe-svg .line-thc,
-.wireframe-mobile .line-thc {
-  stroke-dasharray: 900;
-  stroke-dashoffset: 900;
-}
-.wireframe-svg .line-svc,
-.wireframe-mobile .line-svc {
-  stroke-dasharray: 400;
-  stroke-dashoffset: 400;
-}
-.wireframe-svg .node-thc,
-.wireframe-svg .node-layer1,
-.wireframe-svg .node-layer2,
-.wireframe-mobile .node-thc,
-.wireframe-mobile .node-layer1,
-.wireframe-mobile .node-layer2 {
-  opacity: 0;
-}
-.wireframe-svg.is-revealed .line-thc,
-.wireframe-svg.is-revealed .line-svc,
-.wireframe-mobile.is-revealed .line-thc,
-.wireframe-mobile.is-revealed .line-svc {
-  animation: drawLine 0.9s 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-.wireframe-svg.is-revealed .line-svc,
-.wireframe-mobile.is-revealed .line-svc {
-  animation-delay: 1.8s;
-  animation-duration: 0.7s;
-}
-.wireframe-svg.is-revealed .node-thc,
-.wireframe-mobile.is-revealed .node-thc {
-  animation: fadeIn 0.6s 0s forwards;
-}
-.wireframe-svg.is-revealed .node-layer1,
-.wireframe-mobile.is-revealed .node-layer1 {
-  animation: fadeIn 0.5s 1.3s forwards;
-}
-.wireframe-svg.is-revealed .node-layer2,
-.wireframe-mobile.is-revealed .node-layer2 {
-  animation: fadeIn 0.5s 2.6s forwards;
-}
-.wireframe-svg .hub-pulse,
-.wireframe-mobile .hub-pulse {
-  opacity: 0.35;
-}
-.wireframe-svg.is-revealed .hub-pulse,
-.wireframe-mobile.is-revealed .hub-pulse {
-  animation: hubGlow 4.5s 2.8s ease-in-out infinite;
-}
-@keyframes hubGlow {
-  0%, 100% { opacity: 0.35; }
-  50% { opacity: 0.75; }
-}
+/* --- About Wireframe SVG — Tier 1 static fade --- */
+@keyframes tier1-fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.wireframe--tier1 .tier1-node { opacity: 0; }
+.wireframe--tier1 .wireframe-svg.is-revealed .tier1-node,
+.wireframe--tier1.is-revealed .tier1-node { animation: tier1-fadeIn 0.22s ease-out forwards; }
+.wireframe--tier1 .wireframe-svg.is-revealed .tier1-node:nth-child(2),
+.wireframe--tier1.is-revealed .tier1-node:nth-child(2) { animation-delay: 0.04s; }
+.wireframe--tier1 .wireframe-svg.is-revealed .tier1-node:nth-child(3),
+.wireframe--tier1.is-revealed .tier1-node:nth-child(3) { animation-delay: 0.08s; }
+.wireframe--tier1 .wireframe-svg.is-revealed .tier1-node:nth-child(4),
+.wireframe--tier1.is-revealed .tier1-node:nth-child(4) { animation-delay: 0.12s; }
+.wireframe--tier1 .wireframe-svg.is-revealed .tier1-node:nth-child(5),
+.wireframe--tier1.is-revealed .tier1-node:nth-child(5) { animation-delay: 0.16s; }
 
 

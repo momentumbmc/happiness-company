@@ -1030,6 +1030,10 @@ a:hover { color: var(--primary-deep); }
 .mockup-delta--bad { background: #FEF3F2; color: #B42318; border-color: #FECDCA; }
 .mockup-delta--warn { background: #FFFAEB; color: #B54708; border-color: #FEDF89; }
 
+.sub-dialog .mockup-card { margin: var(--space-lg) 0; }
+.sub-dialog .mockup-card .mockup-index { border: none; padding: 0; margin-bottom: var(--space-md); background: transparent; }
+.sub-dialog .mockup-card .mockup-track--index { height: 6px; }
+
 .mockup-divider { height: 1px; background: var(--hairline); margin: var(--space-lg) 0 var(--space-md); }
 
 .mockup-flagged { display: flex; flex-wrap: wrap; gap: var(--space-sm); }

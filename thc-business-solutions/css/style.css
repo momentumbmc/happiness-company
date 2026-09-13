@@ -165,10 +165,10 @@ a:hover {
 
 /* --- Typography --- */
 .display-xxl {
-  font-size: 56px;
+  font-size: clamp(32px, 2.5vw + 24px, 64px);
   font-weight: 300;
   line-height: 1.08;
-  letter-spacing: -1.4px;
+  letter-spacing: -0.03em;
 }
 
 .display-xl {
@@ -197,6 +197,10 @@ a:hover {
   font-weight: 400;
   line-height: 1.7;
   letter-spacing: 0;
+}
+
+p.hero-subhead {
+  font-size: clamp(15px, 0.5vw + 13px, 20px);
 }
 
 .body-md {
@@ -2714,10 +2718,7 @@ a:hover {
 }
 
 @media (max-width: 768px) {
-  .display-xxl {
-    font-size: 36px;
-    letter-spacing: -0.9px;
-  }
+
 
   .display-xl {
     font-size: 32px;
@@ -3001,10 +3002,7 @@ a:hover {
     padding-left: var(--space-lg);
   }
 
-  .display-xxl {
-    font-size: 28px;
-    letter-spacing: -0.7px;
-  }
+
 
   .display-xl {
     font-size: 26px;
@@ -3096,10 +3094,7 @@ a:hover {
     padding: 0 16px;
   }
 
-  .display-xxl {
-    font-size: 24px;
-    letter-spacing: -0.6px;
-  }
+
 
   .display-xl {
     font-size: 22px;

@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Appointments — The Happiness Company Business Solutions Private Limited | BUSINESS ENGINEERING. Don't just grow the business. Engineer it.</title>
-  <meta name="description" content="Schedule a confidential Strategic Diagnostic Session with The Happiness Company Business Solutions Private Limited. We engineer businesses to perform better, adapt faster and grow sustainably.">
+  <title>Schedule an Appointment — The Happiness Company Business Solutions Private Limited</title>
+  <meta name="description" content="We engineer businesses to perform better, adapt faster and grow sustainably">
   <link rel="stylesheet" href="css/style.css">
-  <meta property="og:title" content="Strategic Diagnostic Session — BUSINESS ENGINEERING. Don't just grow the business. Engineer it.">
+  <meta property="og:title" content="BUSINESS ENGINEERING. Don't just grow the business. Engineer it.">
   <meta property="og:description" content="We engineer businesses to perform better, adapt faster and grow sustainably">
   <meta property="og:image" content="assets/shared/logo.svg">
   <meta property="og:type" content="website">
@@ -15,550 +15,594 @@
 
   <style>
     /* ============================================================
-       APPOINTMENTS — Standalone Tier-1 Corporate Scheduling Page
+       EXECUTIVE SCHEDULING PORTAL — 9.9/10 Tier-1 Corporate App UI
        Scoped strictly to appointments.html (zero global overrides)
        ============================================================ */
 
-    .appt-page {
-      --appt-navy: var(--brand-secondary, #051C2C);
-      --appt-navy-mid: #0B253A;
-      --appt-blue: var(--brand-primary, #1868DB);
-      --appt-blue-deep: var(--primary-deep, #1456B8);
-      --appt-ink: var(--ink, #0A1220);
-      --appt-ink-body: var(--ink-secondary, #363C48);
-      --appt-ink-mute: var(--ink-mute, #6C7179);
-      --appt-rule: var(--hairline, #DCE3EB);
-      --appt-rule-dark: rgba(255, 255, 255, 0.14);
-      --appt-surface: var(--canvas, #FFFFFF);
-      --appt-surface-soft: var(--canvas-soft, #F6F9FC);
-      font-size: clamp(16px, 0.3vw + 15px, 17.5px);
-      line-height: 1.72;
-    }
+    body.exec-portal {
+      --p-navy: #051C2C;
+      --p-navy-elev: #0A253A;
+      --p-blue: #1868DB;
+      --p-blue-soft: #60A5FA;
+      --p-emerald: #10B981;
+      --p-ink: #0A1220;
+      --p-body: #424B5A;
+      --p-mute: #6B7280;
+      --p-rule: #E5EAF1;
+      --p-surface: #FFFFFF;
+      --p-canvas: #F5F7FB;
+      --p-ease: cubic-bezier(0.16, 1, 0.3, 1);
 
-    /* Solid crisp institutional top bar above dark-navy hero */
-    .appt-page .nav {
-      background: rgba(255, 255, 255, 0.97);
-      border-bottom: 1px solid var(--appt-rule);
-    }
-
-    /* ---- Executive Dark-Navy Hero (McKinsey Institutional Header) ---- */
-    .appt-hero {
-      position: relative;
-      background-color: var(--appt-navy);
-      color: #FFFFFF;
-      padding: calc(var(--nav-height, 64px) + 72px) 0 80px;
-      overflow: hidden;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    /* Subtle architectural blueprint hairline grid */
-    .appt-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--p-canvas);
       background-image:
-        linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-      background-size: 64px 64px;
-      mask-image: radial-gradient(ellipse 85% 90% at 75% 20%, #000 10%, transparent 80%);
-      -webkit-mask-image: radial-gradient(ellipse 85% 90% at 75% 20%, #000 10%, transparent 80%);
-      pointer-events: none;
+        radial-gradient(ellipse 85% 48% at 50% -12%, rgba(24, 104, 219, 0.07) 0%, rgba(24, 104, 219, 0) 68%),
+        linear-gradient(180deg, #F8FAFD 0%, #F2F5FA 100%);
+      color: var(--p-ink);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
 
-    /* Refined atmospheric cobalt glow in upper-right corner */
-    .appt-hero::after {
-      content: '';
-      position: absolute;
-      top: -180px;
-      right: -120px;
-      width: 640px;
-      height: 520px;
-      background: radial-gradient(circle, rgba(24, 104, 219, 0.24) 0%, rgba(24, 104, 219, 0) 68%);
-      pointer-events: none;
+    /* ---- Whisper-Quiet Floating Brand Bar ---- */
+    .portal-bar {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 18px 24px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
     }
 
-    .appt-hero__inner {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.85fr);
-      gap: 64px;
-      align-items: end;
-    }
-
-    .appt-eyebrow {
+    .portal-brand {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #9EC0F0;
-      margin-bottom: 22px;
+      gap: 11px;
+      text-decoration: none;
+      color: var(--p-ink);
+      min-width: 0;
     }
 
-    .appt-eyebrow::before {
-      content: '';
-      display: inline-block;
-      width: 24px;
-      height: 2px;
-      background: var(--appt-blue);
+    .portal-brand img {
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
       flex-shrink: 0;
     }
 
-    .appt-hero__title {
-      font-size: clamp(34px, 3vw + 20px, 58px);
-      font-weight: 300;
-      line-height: 1.08;
-      letter-spacing: -0.03em;
-      color: #FFFFFF;
-      margin-bottom: 24px;
-      max-width: 680px;
-    }
-
-    .appt-hero__lead {
-      font-size: clamp(16px, 0.45vw + 14.5px, 19.5px);
-      font-weight: 300;
-      line-height: 1.65;
-      color: rgba(255, 255, 255, 0.8);
-      max-width: 580px;
-      margin-bottom: 36px;
-    }
-
-    .appt-hero__actions {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .appt-btn-light {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      height: 48px;
-      padding: 0 28px;
-      border-radius: 6px;
-      background: var(--appt-blue);
-      color: #FFFFFF;
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-      text-decoration: none;
-      transition: background 0.25s var(--ease-out), transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
-    }
-
-    .appt-btn-light:hover {
-      background: #2B7AE8;
-      color: #FFFFFF;
-      transform: translateY(-1px);
-      box-shadow: 0 8px 24px rgba(24, 104, 219, 0.35);
-    }
-
-    .appt-btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      height: 48px;
-      padding: 0 4px;
-      font-size: 15px;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.85);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.28);
-      transition: color 0.2s var(--ease-out), border-color 0.2s var(--ease-out);
-    }
-
-    .appt-btn-ghost:hover {
-      color: #FFFFFF;
-      border-color: #FFFFFF;
-    }
-
-    .appt-hero__existing {
-      margin-top: 28px;
-      padding-top: 20px;
-      border-top: 1px solid var(--appt-rule-dark);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.68);
-    }
-
-    .appt-hero__existing a {
-      color: #9EC0F0;
-      font-weight: 500;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(158, 192, 240, 0.4);
-      padding-bottom: 1px;
-      transition: color 0.2s var(--ease-out), border-color 0.2s var(--ease-out);
-    }
-
-    .appt-hero__existing a:hover {
-      color: #FFFFFF;
-      border-color: #FFFFFF;
-    }
-
-    /* Executive Dossier Card in Hero */
-    .appt-dossier {
-      background: rgba(255, 255, 255, 0.035);
-      border: 1px solid var(--appt-rule-dark);
-      border-top: 2px solid var(--appt-blue);
-      border-radius: 4px;
-      padding: 28px 30px;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-
-    .appt-dossier__head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding-bottom: 16px;
-      margin-bottom: 18px;
-      border-bottom: 1px solid var(--appt-rule-dark);
-    }
-
-    .appt-dossier__title {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.11em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.9);
-    }
-
-    .appt-dossier__status {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 11px;
-      font-weight: 500;
-      color: #86EFAC;
-      letter-spacing: 0.03em;
-    }
-
-    .appt-dossier__dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #10B981;
-      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.24);
-    }
-
-    .appt-dossier__list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .appt-dossier__row {
-      display: grid;
-      grid-template-columns: 126px 1fr;
-      gap: 14px;
-      align-items: baseline;
+    .portal-brand__name {
       font-size: 13.5px;
-      line-height: 1.45;
-    }
-
-    .appt-dossier__label {
-      font-size: 11px;
       font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.54);
+      letter-spacing: -0.015em;
+      color: var(--p-navy);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    .appt-dossier__value {
-      color: rgba(255, 255, 255, 0.94);
-      font-weight: 400;
-    }
-
-    /* ---- Section Headings (Tier-1 Editorial Scale) ---- */
-    .appt-section {
-      padding: 88px 0;
-    }
-
-    .appt-section--soft {
-      background: var(--appt-surface-soft);
-      border-top: 1px solid var(--appt-rule);
-      border-bottom: 1px solid var(--appt-rule);
-    }
-
-    .appt-section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 32px;
-      margin-bottom: 44px;
-      flex-wrap: wrap;
-    }
-
-    .appt-h2 {
-      font-size: clamp(26px, 2vw + 18px, 42px);
-      font-weight: 300;
-      line-height: 1.16;
-      letter-spacing: -0.025em;
-      color: var(--appt-ink);
-      margin-top: 14px;
-      max-width: 720px;
-    }
-
-    .appt-lead {
-      font-size: clamp(16px, 0.35vw + 15px, 18px);
-      line-height: 1.7;
-      color: var(--appt-ink-body);
-      max-width: 680px;
-      margin-top: 16px;
-    }
-
-    /* ---- Primary Scheduling Desk (Zcal Embed Stage) ---- */
-    .appt-desk-badges {
-      display: flex;
+    .portal-bar__right {
+      display: inline-flex;
       align-items: center;
       gap: 10px;
-      flex-wrap: wrap;
+      flex-shrink: 0;
     }
 
-    .appt-meta-pill {
+    .portal-pill-link {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       padding: 6px 12px;
-      border-radius: 4px;
-      border: 1px solid var(--appt-rule);
-      background: var(--appt-surface);
-      font-size: 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(5, 28, 44, 0.09);
+      font-size: 12.5px;
       font-weight: 500;
-      color: var(--appt-ink-body);
-      letter-spacing: 0.01em;
+      color: var(--p-body);
+      text-decoration: none;
+      transition: background 0.2s var(--p-ease), border-color 0.2s var(--p-ease), color 0.2s var(--p-ease);
     }
 
-    .appt-meta-pill svg {
-      color: var(--appt-blue);
-      flex-shrink: 0;
-    }
-
-    /* ---- Client Relationship Selector (New vs Existing Client) ---- */
-    .appt-switcher {
-      margin-bottom: 24px;
-    }
-
-    .appt-switcher__top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 14px;
-      flex-wrap: wrap;
-    }
-
-    .appt-switcher__prompt {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      color: var(--appt-ink-mute);
-    }
-
-    .appt-switcher__quick {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13.5px;
-      color: var(--appt-ink-body);
-    }
-
-    .appt-switcher__quick-btn {
-      appearance: none;
-      background: none;
-      border: none;
-      padding: 0;
-      font-family: inherit;
-      font-size: 13.5px;
-      font-weight: 600;
-      color: var(--appt-blue);
-      cursor: pointer;
-      border-bottom: 1px solid rgba(24, 104, 219, 0.35);
-      transition: color 0.2s var(--ease-out), border-color 0.2s var(--ease-out);
-    }
-
-    .appt-switcher__quick-btn:hover {
-      color: var(--appt-blue-deep);
-      border-color: var(--appt-blue-deep);
-    }
-
-    .appt-switcher__grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .appt-client-tab {
-      appearance: none;
-      width: 100%;
-      text-align: left;
-      font-family: var(--font-sans);
-      background: var(--appt-surface);
-      border: 1px solid var(--appt-rule);
-      border-top: 2px solid transparent;
-      border-radius: 6px;
-      padding: 22px 24px;
-      cursor: pointer;
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      transition: border-color 0.22s var(--ease-out), background 0.22s var(--ease-out), box-shadow 0.22s var(--ease-out);
-    }
-
-    .appt-client-tab:hover {
-      border-color: rgba(24, 104, 219, 0.45);
-      background: #FAFBFD;
-    }
-
-    .appt-client-tab[aria-selected="true"] {
-      border-color: var(--appt-blue);
-      border-top: 2px solid var(--appt-blue);
+    .portal-pill-link:hover {
       background: #FFFFFF;
-      box-shadow: 0 6px 20px rgba(24, 104, 219, 0.08);
+      border-color: rgba(24, 104, 219, 0.35);
+      color: var(--p-navy);
     }
 
-    .appt-client-tab__radio {
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      border: 1.5px solid #B6C2D1;
-      margin-top: 3px;
-      flex-shrink: 0;
-      display: grid;
-      place-items: center;
-      transition: border-color 0.2s var(--ease-out);
-    }
-
-    .appt-client-tab__radio::after {
-      content: '';
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--appt-blue);
-      transform: scale(0);
-      transition: transform 0.2s var(--ease-out);
-    }
-
-    .appt-client-tab[aria-selected="true"] .appt-client-tab__radio {
-      border-color: var(--appt-blue);
-    }
-
-    .appt-client-tab[aria-selected="true"] .appt-client-tab__radio::after {
-      transform: scale(1);
-    }
-
-    .appt-client-tab__body {
-      min-width: 0;
-      flex: 1;
-    }
-
-    .appt-client-tab__eyebrow {
+    /* ---- Main Unified Split Workspace ---- */
+    .portal-main {
+      flex: 1 0 auto;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px 24px;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 6px;
+      flex-direction: column;
     }
 
-    .appt-client-tab__tag {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      color: var(--appt-ink-mute);
+    .portal-frame {
+      display: grid;
+      grid-template-columns: 364px minmax(0, 1fr);
+      background: var(--p-surface);
+      border-radius: 14px;
+      box-shadow:
+        0 28px 70px -20px rgba(5, 28, 44, 0.13),
+        0 6px 20px -6px rgba(5, 28, 44, 0.06),
+        0 0 0 1px rgba(5, 28, 44, 0.075);
+      overflow: hidden;
+      min-height: 700px;
     }
 
-    .appt-client-tab[aria-selected="true"] .appt-client-tab__tag {
-      color: var(--appt-blue);
-    }
-
-    .appt-client-tab__pill {
-      font-size: 10.5px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      padding: 2px 8px;
-      border-radius: 3px;
-      background: var(--appt-surface-soft);
-      border: 1px solid var(--appt-rule);
-      color: var(--appt-ink-body);
-    }
-
-    .appt-client-tab[aria-selected="true"] .appt-client-tab__pill {
-      background: rgba(24, 104, 219, 0.08);
-      border-color: rgba(24, 104, 219, 0.22);
-      color: var(--appt-blue);
-    }
-
-    .appt-client-tab__title {
-      display: block;
-      font-size: 17.5px;
-      font-weight: 500;
-      line-height: 1.3;
-      letter-spacing: -0.015em;
-      color: var(--appt-ink);
-      margin-bottom: 4px;
-    }
-
-    .appt-client-tab__desc {
-      display: block;
-      font-size: 13.5px;
-      line-height: 1.55;
-      color: var(--appt-ink-body);
-    }
-
-    .appt-console {
-      background: var(--appt-surface);
-      border: 1px solid var(--appt-rule);
-      border-radius: 8px;
-      box-shadow: 0 12px 36px rgba(5, 28, 44, 0.06), 0 2px 6px rgba(5, 28, 44, 0.03);
+    /* ============================================================
+       LEFT RAIL — Deep McKinsey Obsidian-Navy Executive Dossier
+       ============================================================ */
+    .portal-rail {
+      position: relative;
+      background-color: var(--p-navy);
+      color: #FFFFFF;
+      padding: 32px 28px 26px;
+      display: flex;
+      flex-direction: column;
       overflow: hidden;
     }
 
-    .appt-console__context {
+    /* Subtle architectural grid & ambient luxury light */
+    .portal-rail::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 100% 0%, rgba(24, 104, 219, 0.28) 0%, rgba(24, 104, 219, 0) 56%),
+        linear-gradient(to right, rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+      background-size: 100% 100%, 40px 40px, 40px 40px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.45) 65%, rgba(0, 0, 0, 0.15) 100%);
+      -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.45) 65%, rgba(0, 0, 0, 0.15) 100%);
+      pointer-events: none;
+    }
+
+    .portal-rail > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .rail-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      align-self: flex-start;
+      padding: 5px 10px 5px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #B8D4F8;
+      margin-bottom: 22px;
+      transition: color 0.25s var(--p-ease), border-color 0.25s var(--p-ease);
+    }
+
+    .rail-status--existing {
+      color: #A7F3D0;
+      border-color: rgba(16, 185, 129, 0.28);
+    }
+
+    .rail-status__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #3B82F6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.28);
+      flex-shrink: 0;
+      transition: background 0.25s var(--p-ease), box-shadow 0.25s var(--p-ease);
+    }
+
+    .rail-status--existing .rail-status__dot {
+      background: var(--p-emerald);
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.28);
+    }
+
+    .rail-title {
+      font-size: 30px;
+      font-weight: 300;
+      line-height: 1.15;
+      letter-spacing: -0.028em;
+      color: #FFFFFF;
+      margin-bottom: 12px;
+    }
+
+    .rail-lead {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.62;
+      color: rgba(255, 255, 255, 0.72);
+      margin-bottom: 24px;
+    }
+
+    /* Hairline Precision Specifications */
+    .rail-specs {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 18px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 22px;
+    }
+
+    .rail-spec {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.88);
+      line-height: 1.35;
+    }
+
+    .rail-spec__icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      display: grid;
+      place-items: center;
+      color: #93C5FD;
+      flex-shrink: 0;
+    }
+
+    .rail-spec__icon--existing {
+      color: #6EE7B7;
+    }
+
+    /* Signature Vault-Style Strict Non-Negotiable NDA Card */
+    .rail-nda {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.065) 0%, rgba(255, 255, 255, 0.03) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-left: 2.5px solid var(--p-blue);
+      border-radius: 8px;
+      padding: 16px 16px 15px;
+      margin-bottom: 18px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    .rail-nda__head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .rail-nda__shield {
+      color: #60A5FA;
+      flex-shrink: 0;
+    }
+
+    .rail-nda__title {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+    }
+
+    .rail-nda__pill {
+      margin-left: auto;
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #93C5FD;
+      background: rgba(24, 104, 219, 0.22);
+      border: 1px solid rgba(96, 165, 250, 0.3);
+      padding: 2px 7px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+
+    .rail-nda__body {
+      font-size: 12.5px;
+      line-height: 1.56;
+      color: rgba(255, 255, 255, 0.78);
+      margin-bottom: 10px;
+    }
+
+    .rail-nda__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #93C5FD;
+      text-decoration: none;
+      transition: color 0.2s var(--p-ease);
+    }
+
+    .rail-nda__link:hover {
+      color: #FFFFFF;
+    }
+
+    /* Compact Optional Agenda Accordion Inside Rail */
+    .rail-agenda {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 14px;
+      margin-bottom: 20px;
+    }
+
+    .rail-agenda summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.86);
+      padding: 4px 0;
+      user-select: none;
+      transition: color 0.2s var(--p-ease);
+    }
+
+    .rail-agenda summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .rail-agenda summary:hover {
+      color: #FFFFFF;
+    }
+
+    .rail-agenda__chevron {
+      color: rgba(255, 255, 255, 0.55);
+      transition: transform 0.25s var(--p-ease);
+    }
+
+    .rail-agenda[open] .rail-agenda__chevron {
+      transform: rotate(180deg);
+      color: #93C5FD;
+    }
+
+    .rail-agenda__list {
+      list-style: none;
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .rail-agenda__item {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 8px;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .rail-agenda__idx {
+      font-size: 11px;
+      font-weight: 600;
+      color: #60A5FA;
+      font-variant-numeric: tabular-nums;
+      padding-top: 1px;
+    }
+
+    .rail-agenda__idx--existing {
+      color: #34D399;
+    }
+
+    .rail-agenda__item strong {
+      color: rgba(255, 255, 255, 0.94);
+      font-weight: 500;
+      display: block;
+    }
+
+    .rail-agenda__item span {
+      color: rgba(255, 255, 255, 0.62);
+    }
+
+    /* Direct Desk Coordinates Pinned at Rail Bottom */
+    .rail-desk {
+      margin-top: auto;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .rail-desk__label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 8px;
+    }
+
+    .rail-desk__links {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      font-size: 12.5px;
+    }
+
+    .rail-desk__links a {
+      color: rgba(255, 255, 255, 0.82);
+      text-decoration: none;
+      width: fit-content;
+      transition: color 0.2s var(--p-ease);
+    }
+
+    .rail-desk__links a:hover {
+      color: #FFFFFF;
+    }
+
+    /* ============================================================
+       RIGHT PANE — Crisp White Gallery Calendar Stage
+       ============================================================ */
+    .portal-stage {
+      display: flex;
+      flex-direction: column;
+      background: var(--p-surface);
+      min-width: 0;
+    }
+
+    /* Sleek Fintech/Corporate Segmented Control Header */
+    .stage-top {
+      padding: 20px 26px 16px;
+      border-bottom: 1px solid var(--p-rule);
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      padding: 12px 28px;
-      background: rgba(24, 104, 219, 0.045);
-      border-bottom: 1px solid var(--appt-rule);
-      font-size: 13.5px;
-      line-height: 1.5;
-      color: var(--appt-ink-body);
       flex-wrap: wrap;
     }
 
-    .appt-console__context strong {
-      color: var(--appt-navy);
+    .segment-well {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+      padding: 4px;
+      background: #F1F4F9;
+      border: 1px solid rgba(5, 28, 44, 0.06);
+      border-radius: 10px;
+      width: 100%;
+    }
+
+    .segment-btn {
+      appearance: none;
+      border: 1px solid transparent;
+      background: transparent;
+      border-radius: 7px;
+      padding: 11px 16px;
+      cursor: pointer;
+      text-align: left;
+      font-family: var(--font-sans);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transition:
+        background 0.22s var(--p-ease),
+        box-shadow 0.22s var(--p-ease),
+        border-color 0.22s var(--p-ease);
+    }
+
+    .segment-btn:hover {
+      background: rgba(255, 255, 255, 0.55);
+    }
+
+    .segment-btn[aria-selected="true"] {
+      background: #FFFFFF;
+      border-color: rgba(5, 28, 44, 0.07);
+      box-shadow:
+        0 2px 8px rgba(5, 28, 44, 0.07),
+        0 1px 2px rgba(5, 28, 44, 0.04);
+    }
+
+    .segment-btn__main {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 0;
+    }
+
+    .segment-btn__dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #CBD5E1;
+      flex-shrink: 0;
+      transition: background 0.22s var(--p-ease), box-shadow 0.22s var(--p-ease);
+    }
+
+    .segment-btn[aria-selected="true"] .segment-btn__dot {
+      background: var(--p-blue);
+      box-shadow: 0 0 0 3px rgba(24, 104, 219, 0.16);
+    }
+
+    .segment-btn[data-client-type="existing"][aria-selected="true"] .segment-btn__dot {
+      background: var(--p-emerald);
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.18);
+    }
+
+    .segment-btn__text {
+      min-width: 0;
+    }
+
+    .segment-btn__kicker {
+      display: block;
+      font-size: 10.5px;
       font-weight: 600;
-      margin-right: 6px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--p-mute);
+      line-height: 1.2;
+      margin-bottom: 2px;
+      transition: color 0.2s var(--p-ease);
     }
 
-    .appt-console__marker--existing {
-      background: #0E9664;
+    .segment-btn[aria-selected="true"] .segment-btn__kicker {
+      color: var(--p-blue);
     }
 
-    .appt-widget-stack {
+    .segment-btn[data-client-type="existing"][aria-selected="true"] .segment-btn__kicker {
+      color: #059669;
+    }
+
+    .segment-btn__label {
+      display: block;
+      font-size: 14.5px;
+      font-weight: 600;
+      letter-spacing: -0.012em;
+      color: var(--p-ink);
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .segment-btn__badge {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--p-mute);
+      background: rgba(5, 28, 44, 0.045);
+      padding: 3px 8px;
+      border-radius: 5px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .segment-btn[aria-selected="true"] .segment-btn__badge {
+      color: var(--p-navy);
+      background: #F1F5FA;
+    }
+
+    /* Live Zcal Calendar Canvas */
+    .stage-calendar {
+      flex: 1 1 auto;
+      padding: 18px 22px 20px;
+      min-height: 560px;
+      background: #FFFFFF;
+    }
+
+    .stage-widget-stack {
       position: relative;
       width: 100%;
     }
 
-    .appt-widget-pane {
+    .stage-pane {
       width: 100%;
+      transition: opacity 0.24s var(--p-ease);
     }
 
-    /* Keep inactive Zcal pane full-width in layout so embed.js renders desktop width cleanly */
-    .appt-widget-pane.is-hidden {
+    /* Full-width hidden clip ensures Zcal renders desktop width before reveal */
+    .stage-pane.is-hidden {
       position: absolute;
       left: 0;
       right: 0;
@@ -571,1197 +615,495 @@
       z-index: -1;
     }
 
-    .appt-console__bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 16px 28px;
-      background: #FAFBFD;
-      border-bottom: 1px solid var(--appt-rule);
-      flex-wrap: wrap;
-    }
-
-    .appt-console__bar-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .appt-console__marker {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--appt-blue);
-      flex-shrink: 0;
-    }
-
-    .appt-console__label {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--appt-navy);
-    }
-
-    .appt-console__sub {
-      font-size: 12.5px;
-      color: var(--appt-ink-mute);
-      padding-left: 12px;
-      border-left: 1px solid var(--appt-rule);
-    }
-
-    .appt-console__fallback {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12.5px;
-      font-weight: 500;
-      color: var(--appt-blue);
-      text-decoration: none;
-    }
-
-    .appt-console__fallback:hover {
-      color: var(--appt-blue-deep);
-      text-decoration: underline;
-    }
-
-    .appt-console__stage {
-      padding: 28px 24px 32px;
-      min-height: 620px;
-      background: var(--appt-surface);
-    }
-
-    .appt-console__stage .zcal-inline-widget {
+    .stage-calendar .zcal-inline-widget {
       width: 100%;
       margin: 0 auto;
     }
 
-    .appt-console__stage .zcal-inline-widget > a {
+    .stage-calendar .zcal-inline-widget > a {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 14px 24px;
-      border-radius: 6px;
-      background: var(--appt-blue);
+      padding: 12px 20px;
+      border-radius: 8px;
+      background: var(--p-blue);
       color: #FFFFFF;
+      font-size: 14px;
       font-weight: 500;
-      font-size: 15px;
       text-decoration: none;
     }
 
-    .appt-console__foot {
+    /* Quiet Precision Footer Strip inside Right Pane */
+    .stage-foot {
+      padding: 13px 26px;
+      border-top: 1px solid #EEF2F7;
+      background: #FAFBFD;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      padding: 16px 28px;
-      background: #FAFBFD;
-      border-top: 1px solid var(--appt-rule);
-      font-size: 12.5px;
-      color: var(--appt-ink-mute);
+      gap: 12px;
       flex-wrap: wrap;
+      font-size: 12px;
+      color: var(--p-mute);
     }
 
-    .appt-console__foot-note {
+    .stage-foot__meta {
       display: inline-flex;
       align-items: center;
       gap: 8px;
     }
 
-    .appt-console__foot-note svg {
-      color: var(--appt-navy);
+    .stage-foot__pulse {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--p-emerald);
       flex-shrink: 0;
     }
 
-    .appt-console__desk-links {
+    .stage-foot__open {
       display: inline-flex;
       align-items: center;
-      gap: 16px;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--p-blue);
+      text-decoration: none;
+    }
+
+    .stage-foot__open:hover {
+      color: var(--p-navy);
+      text-decoration: underline;
+    }
+
+    /* ---- Whisper-Quiet Institutional Legal Footer ---- */
+    .portal-legal {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
       flex-wrap: wrap;
+      font-size: 11.5px;
+      color: var(--p-mute);
     }
 
-    .appt-console__desk-links a {
-      color: var(--appt-ink);
-      font-weight: 500;
+    .portal-legal__cin {
+      display: inline-block;
+      margin-left: 10px;
+      padding-left: 10px;
+      border-left: 1px solid #D5DEE9;
+      letter-spacing: 0.03em;
     }
 
-    .appt-console__desk-links a:hover {
-      color: var(--appt-blue);
+    .portal-legal__right {
+      color: var(--p-mute);
     }
 
-    /* ---- 4-Part Diagnostic Agenda Matrix (McKinsey Hairline Grid) ---- */
-    .appt-agenda-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border: 1px solid var(--appt-rule);
-      border-radius: 6px;
-      overflow: hidden;
-      background: var(--appt-rule);
-      gap: 1px;
+    /* ============================================================
+       RESPONSIVE BREAKPOINTS (Tablet & Mobile Precision)
+       ============================================================ */
+    @media (max-width: 1140px) {
+      .portal-frame {
+        grid-template-columns: 320px minmax(0, 1fr);
+      }
+
+      .portal-rail {
+        padding: 26px 22px 22px;
+      }
+
+      .rail-title {
+        font-size: 26px;
+      }
+
+      .segment-btn__badge {
+        display: none;
+      }
     }
 
-    .appt-agenda-cell {
-      background: var(--appt-surface);
-      padding: 32px 26px;
-      display: flex;
-      flex-direction: column;
-      transition: background 0.25s var(--ease-out);
-    }
-
-    .appt-agenda-cell:hover {
-      background: #FAFBFD;
-    }
-
-    .appt-agenda-cell__top {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      margin-bottom: 22px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--appt-rule);
-    }
-
-    .appt-agenda-cell__num {
-      font-size: 26px;
-      font-weight: 300;
-      letter-spacing: -0.02em;
-      color: var(--appt-blue);
-      font-variant-numeric: tabular-nums;
-      line-height: 1;
-    }
-
-    .appt-agenda-cell__time {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--appt-ink-mute);
-      font-variant-numeric: tabular-nums;
-    }
-
-    .appt-agenda-cell__title {
-      font-size: 18px;
-      font-weight: 500;
-      line-height: 1.32;
-      letter-spacing: -0.015em;
-      color: var(--appt-ink);
-      margin-bottom: 12px;
-    }
-
-    .appt-agenda-cell__desc {
-      font-size: 15px;
-      line-height: 1.65;
-      color: var(--appt-ink-body);
-    }
-
-    /* ---- Executive Alignment & Preparation Split ---- */
-    .appt-brief-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      align-items: stretch;
-    }
-
-    .appt-brief-panel {
-      background: var(--appt-surface);
-      border: 1px solid var(--appt-rule);
-      border-radius: 6px;
-      padding: 36px 34px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .appt-brief-panel__title {
-      font-size: 24px;
-      font-weight: 400;
-      line-height: 1.25;
-      letter-spacing: -0.02em;
-      color: var(--appt-ink);
-      margin-top: 12px;
-      margin-bottom: 10px;
-    }
-
-    .appt-brief-panel__sub {
-      font-size: 15.5px;
-      line-height: 1.65;
-      color: var(--appt-ink-body);
-      margin-bottom: 26px;
-    }
-
-    .appt-role-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .appt-role-item {
-      padding: 16px 0;
-      border-top: 1px solid var(--appt-rule);
-    }
-
-    .appt-role-item:last-child {
-      padding-bottom: 0;
-    }
-
-    .appt-role-item__name {
-      font-size: 15.5px;
-      font-weight: 600;
-      color: var(--appt-ink);
-      margin-bottom: 4px;
-    }
-
-    .appt-role-item__desc {
-      font-size: 14.5px;
-      line-height: 1.6;
-      color: var(--appt-ink-body);
-    }
-
-    .appt-prep-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      margin-bottom: 28px;
-    }
-
-    .appt-prep-item {
-      display: grid;
-      grid-template-columns: 34px 1fr;
-      gap: 14px;
-      align-items: start;
-      padding-top: 16px;
-      border-top: 1px solid var(--appt-rule);
-    }
-
-    .appt-prep-item__idx {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--appt-blue);
-      font-variant-numeric: tabular-nums;
-      padding-top: 2px;
-    }
-
-    .appt-prep-item__text strong {
-      display: block;
-      font-size: 15.5px;
-      font-weight: 600;
-      color: var(--appt-ink);
-      margin-bottom: 3px;
-    }
-
-    .appt-prep-item__text span {
-      font-size: 14.5px;
-      line-height: 1.6;
-      color: var(--appt-ink-body);
-    }
-
-    .appt-nda-box {
-      margin-top: auto;
-      padding: 18px 20px;
-      background: var(--appt-surface-soft);
-      border: 1px solid var(--appt-rule);
-      border-left: 3px solid var(--appt-navy);
-      border-radius: 4px;
-      font-size: 13.5px;
-      line-height: 1.55;
-      color: var(--appt-ink-body);
-    }
-
-    .appt-nda-box strong {
-      color: var(--appt-ink);
-      font-weight: 600;
-    }
-
-    /* ---- Four Practice Lenses ---- */
-    .appt-lenses {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-    }
-
-    .appt-lens-card {
-      display: flex;
-      flex-direction: column;
-      padding: 28px 24px;
-      background: var(--appt-surface);
-      border: 1px solid var(--appt-rule);
-      border-radius: 6px;
-      text-decoration: none;
-      transition: border-color 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out), transform 0.25s var(--ease-out);
-    }
-
-    .appt-lens-card:hover {
-      border-color: var(--appt-blue);
-      box-shadow: var(--shadow-md);
-      transform: translateY(-2px);
-    }
-
-    .appt-lens-card__code {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--appt-blue);
-      margin-bottom: 12px;
-    }
-
-    .appt-lens-card__title {
-      font-size: 18px;
-      font-weight: 500;
-      line-height: 1.3;
-      color: var(--appt-ink);
-      margin-bottom: 10px;
-    }
-
-    .appt-lens-card__desc {
-      font-size: 14.5px;
-      line-height: 1.6;
-      color: var(--appt-ink-body);
-      margin-bottom: 20px;
-      flex-grow: 1;
-    }
-
-    .appt-lens-card__more {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 13.5px;
-      font-weight: 500;
-      color: var(--appt-blue);
-    }
-
-    /* ---- Executive FAQ (Hairline Accordion) ---- */
-    .appt-faq-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
-      gap: 64px;
-      align-items: start;
-    }
-
-    .appt-faq-list {
-      border-top: 1px solid var(--appt-rule);
-    }
-
-    .appt-faq-item {
-      border-bottom: 1px solid var(--appt-rule);
-    }
-
-    .appt-faq-item summary {
-      list-style: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 24px 0;
-      font-size: 18px;
-      font-weight: 500;
-      line-height: 1.35;
-      letter-spacing: -0.01em;
-      color: var(--appt-ink);
-      transition: color 0.2s var(--ease-out);
-    }
-
-    .appt-faq-item summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .appt-faq-item summary:hover {
-      color: var(--appt-blue);
-    }
-
-    .appt-faq-icon {
-      width: 20px;
-      height: 20px;
-      color: var(--appt-ink-mute);
-      flex-shrink: 0;
-      transition: transform 0.25s var(--ease-out), color 0.25s var(--ease-out);
-    }
-
-    .appt-faq-item[open] .appt-faq-icon {
-      transform: rotate(45deg);
-      color: var(--appt-blue);
-    }
-
-    .appt-faq-body {
-      padding: 0 36px 24px 0;
-      font-size: 15.5px;
-      line-height: 1.7;
-      color: var(--appt-ink-body);
-    }
-
-    /* ---- Direct Executive Desk Band (Deep Navy) ---- */
-    .appt-desk-band {
-      background: var(--appt-navy);
-      color: #FFFFFF;
-      padding: 68px 0;
-    }
-
-    .appt-desk-band__grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      gap: 48px;
-      align-items: center;
-    }
-
-    .appt-desk-band__title {
-      font-size: clamp(24px, 1.8vw + 16px, 34px);
-      font-weight: 300;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-      color: #FFFFFF;
-      margin-bottom: 12px;
-    }
-
-    .appt-desk-band__copy {
-      font-size: 15.5px;
-      line-height: 1.65;
-      color: rgba(255, 255, 255, 0.74);
-      max-width: 520px;
-    }
-
-    .appt-desk-band__coords {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      padding: 28px;
-      border: 1px solid var(--appt-rule-dark);
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.03);
-    }
-
-    .appt-coord__label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.52);
-      margin-bottom: 6px;
-    }
-
-    .appt-coord__val {
-      font-size: 14.5px;
-      color: #FFFFFF;
-      line-height: 1.5;
-    }
-
-    .appt-coord__val a {
-      color: #FFFFFF;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-    }
-
-    .appt-coord__val a:hover {
-      border-color: #FFFFFF;
-    }
-
-    .appt-coord--full {
-      grid-column: 1 / -1;
-      padding-top: 16px;
-      border-top: 1px solid var(--appt-rule-dark);
-    }
-
-    /* ---- Responsive Breakpoints ---- */
-    @media (max-width: 1080px) {
-      .appt-hero__inner {
+    @media (max-width: 980px) {
+      .portal-frame {
         grid-template-columns: 1fr;
-        gap: 40px;
+        min-height: auto;
       }
 
-      .appt-agenda-grid {
-        grid-template-columns: repeat(2, 1fr);
+      /* Compact mobile-first executive header rail so calendar stays immediately reachable */
+      .portal-rail {
+        padding: 22px 22px 20px;
       }
 
-      .appt-lenses {
-        grid-template-columns: repeat(2, 1fr);
+      .rail-status {
+        margin-bottom: 12px;
       }
 
-      .appt-faq-layout {
-        grid-template-columns: 1fr;
-        gap: 32px;
+      .rail-title {
+        font-size: 24px;
+        margin-bottom: 8px;
       }
 
-      .appt-desk-band__grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
+      .rail-lead {
+        font-size: 13.5px;
+        margin-bottom: 16px;
+      }
+
+      .rail-specs {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px 18px;
+        padding: 12px 0;
+        margin-bottom: 16px;
+      }
+
+      .rail-nda {
+        margin-bottom: 12px;
+      }
+
+      .rail-agenda {
+        margin-bottom: 0;
+      }
+
+      .rail-desk {
+        display: none;
       }
     }
 
-    @media (max-width: 768px) {
-      .appt-hero {
-        padding: calc(var(--nav-height, 64px) + 44px) 0 52px;
+    @media (max-width: 640px) {
+      .portal-bar {
+        padding: 14px 16px 10px;
       }
 
-      .appt-section {
-        padding: 56px 0;
+      .portal-brand__name {
+        font-size: 12.5px;
+        max-width: 205px;
       }
 
-      .appt-section-header {
-        margin-bottom: 28px;
-        gap: 20px;
-      }
-
-      .appt-dossier {
-        padding: 22px 20px;
-      }
-
-      .appt-dossier__row {
-        grid-template-columns: 1fr;
-        gap: 2px;
-      }
-
-      .appt-console__bar,
-      .appt-console__context,
-      .appt-console__foot {
-        padding: 14px 16px;
-      }
-
-      .appt-switcher__grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-
-      .appt-client-tab {
-        padding: 18px 16px;
-      }
-
-      .appt-console__sub {
+      .portal-pill-link span {
         display: none;
       }
 
-      .appt-console__stage {
-        padding: 16px 10px 20px;
-        min-height: 540px;
+      .portal-main {
+        padding: 0 12px 20px;
       }
 
-      .appt-agenda-grid,
-      .appt-brief-grid,
-      .appt-lenses {
+      .portal-frame {
+        border-radius: 12px;
+      }
+
+      .portal-rail {
+        padding: 18px 16px 16px;
+      }
+
+      .rail-title {
+        font-size: 22px;
+      }
+
+      .rail-specs {
+        display: none;
+      }
+
+      .rail-nda {
+        padding: 13px 14px;
+      }
+
+      .rail-nda__pill {
+        display: none;
+      }
+
+      .stage-top {
+        padding: 14px 14px 12px;
+      }
+
+      .segment-well {
         grid-template-columns: 1fr;
       }
 
-      .appt-brief-panel {
-        padding: 26px 22px;
+      .segment-btn {
+        padding: 10px 12px;
       }
 
-      .appt-faq-item summary {
-        font-size: 16.5px;
-        padding: 20px 0;
+      .stage-calendar {
+        padding: 12px 8px 16px;
+        min-height: 500px;
       }
 
-      .appt-faq-body {
-        padding: 0 0 20px 0;
+      .stage-foot {
+        padding: 12px 14px;
       }
 
-      .appt-desk-band {
-        padding: 48px 0;
-      }
-
-      .appt-desk-band__coords {
-        grid-template-columns: 1fr;
-        padding: 22px 20px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .appt-hero__actions {
+      .portal-legal {
+        padding: 0 16px 24px;
         flex-direction: column;
-        align-items: stretch;
-        gap: 14px;
+        align-items: flex-start;
+        gap: 6px;
       }
 
-      .appt-btn-light {
-        width: 100%;
-      }
-
-      .appt-btn-ghost {
-        justify-content: center;
+      .portal-legal__cin {
+        display: block;
+        margin-left: 0;
+        padding-left: 0;
+        border-left: none;
+        margin-top: 2px;
       }
     }
   </style>
 </head>
 
-<body class="appt-page">
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+<body class="exec-portal">
+  <a href="#booking-workspace" class="skip-link">Skip to scheduling calendar</a>
 
-  <!-- ======== NAVBAR ======== -->
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">
-        <img src="assets/shared/logo.png" width="32" height="32" alt="The Happiness Company Business Solutions Private Limited">
-      </a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="consultancy.html">Consultancy</a></li>
-        <li><a href="training.html">Training</a></li>
-        <li><a href="procurement.html">Procurement</a></li>
-        <li><a href="cost-optimization.html">Cost Optimization</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <a href="#booking-desk" class="btn btn-primary nav-cta">Select a Time</a>
-      <button class="nav-mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-          aria-hidden="true">
-          <line x1="3" y1="12" x2="21" y2="12" />
-          <line x1="3" y1="6" x2="21" y2="6" />
-          <line x1="3" y1="18" x2="21" y2="18" />
+  <!-- ======== WHISPER-QUIET INSTITUTIONAL BRAND BAR ======== -->
+  <header class="portal-bar">
+    <a href="index.html" class="portal-brand" title="The Happiness Company Business Solutions Private Limited">
+      <img src="assets/shared/logo.png" width="26" height="26"
+        alt="The Happiness Company Business Solutions Private Limited">
+      <span class="portal-brand__name">The Happiness Company Business Solutions Private Limited</span>
+    </a>
+
+    <div class="portal-bar__right">
+      <a href="tel:+919481369078" class="portal-pill-link" aria-label="Call Executive Desk">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
         </svg>
-      </button>
+        <span>+91 94813 69078</span>
+      </a>
+      <a href="index.html" class="portal-pill-link">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="19" y1="12" x2="5" y2="12" />
+          <polyline points="12 19 5 12 12 5" />
+        </svg>
+        <span>Main Website</span>
+      </a>
     </div>
-  </nav>
+  </header>
 
-  <main id="main-content">
+  <!-- ======== UNIFIED SPLIT-PANE EXECUTIVE SCHEDULING APP ======== -->
+  <main id="booking-workspace" class="portal-main">
+    <section class="portal-frame" aria-label="Executive Appointment Scheduler">
 
-    <!-- ======== SECTION 1: EXECUTIVE HERO ======== -->
-    <section class="appt-hero">
-      <div class="container">
-        <div class="appt-hero__inner">
-          <div class="fade-in">
-            <p class="appt-eyebrow">Executive Scheduling &middot; Business Engineering</p>
-            <h1 class="appt-hero__title">Schedule a Strategic Diagnostic Session.</h1>
-            <p class="appt-hero__lead">A structured, confidential working session with our senior engineering and advisory
-              leads. We examine where operational friction, workforce misalignment, and hidden cost leakage are eroding
-              organizational performance—before prescribing a single intervention.</p>
-            <div class="appt-hero__actions">
-              <a href="#booking-desk" class="appt-btn-light">
-                Reserve Your Session
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <line x1="12" y1="5" x2="12" y2="19" />
-                  <polyline points="19 12 12 19 5 12" />
-                </svg>
-              </a>
-              <a href="#session-architecture" class="appt-btn-ghost">Review Session Agenda</a>
-            </div>
-            <div class="appt-hero__existing">
-              <span>Already a client?</span>
-              <a href="#booking-desk" id="hero-existing-trigger" data-select-client="existing">Schedule an Existing Client Review Meeting &rarr;</a>
-            </div>
-          </div>
-
-          <aside class="appt-dossier fade-in delay-1" aria-label="Session specifications">
-            <div class="appt-dossier__head">
-              <span class="appt-dossier__title">Engagement Brief</span>
-              <span class="appt-dossier__status">
-                <span class="appt-dossier__dot" aria-hidden="true"></span>
-                Calendar Open
-              </span>
-            </div>
-            <ul class="appt-dossier__list">
-              <li class="appt-dossier__row">
-                <span class="appt-dossier__label">Session Format</span>
-                <span class="appt-dossier__value">60–90 Min &middot; Senior Practitioner-Led</span>
-              </li>
-              <li class="appt-dossier__row">
-                <span class="appt-dossier__label">Delivery Mode</span>
-                <span class="appt-dossier__value">Private Video Briefing or On-Site Audit</span>
-              </li>
-              <li class="appt-dossier__row">
-                <span class="appt-dossier__label">Diagnostic Scope</span>
-                <span class="appt-dossier__value">Operations, Workforce, Procurement &amp; Margin</span>
-              </li>
-              <li class="appt-dossier__row">
-                <span class="appt-dossier__label">Output</span>
-                <span class="appt-dossier__value">Root-Cause Observations &amp; Sequenced Roadmap</span>
-              </li>
-              <li class="appt-dossier__row">
-                <span class="appt-dossier__label">Confidentiality</span>
-                <span class="appt-dossier__value">Strict Executive Discretion &middot; NDA Available</span>
-              </li>
-              <li class="appt-dossier__row">
-                <span class="appt-dossier__label">Commercial Terms</span>
-                <span class="appt-dossier__value">Complimentary &middot; Zero Vendor Obligation</span>
-              </li>
-            </ul>
-          </aside>
+      <!-- LEFT RAIL: Deep McKinsey Navy Dossier & Strict NDA Vault -->
+      <aside class="portal-rail">
+        <div id="rail-status" class="rail-status">
+          <span class="rail-status__dot" aria-hidden="true"></span>
+          <span id="rail-status-label">New Client Scheduling</span>
         </div>
-      </div>
-    </section>
 
-    <!-- ======== SECTION 2: LIVE SCHEDULING CONSOLE (ZCAL EMBED) ======== -->
-    <section id="booking-desk" class="appt-section appt-section--soft">
-      <div class="container">
-        <div class="appt-section-header fade-in">
-          <div>
-            <p class="micro-cap">Direct Calendar Access</p>
-            <h2 class="appt-h2">Select Your Preferred Date &amp; Time</h2>
-            <p class="appt-lead">Choose an open slot directly from our scheduling desk below. Calendar invitations and
-              video briefing coordinates are dispatched automatically upon confirmation.</p>
-          </div>
-          <div class="appt-desk-badges">
-            <span class="appt-meta-pill">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <h1 id="rail-title" class="rail-title">Strategic Diagnostic Session.</h1>
+        <p id="rail-lead" class="rail-lead">A confidential working session with our senior practitioners to diagnose
+          operational friction, workforce alignment, procurement, and margin leakage.</p>
+
+        <ul id="rail-specs" class="rail-specs">
+          <li class="rail-spec">
+            <span class="rail-spec__icon" aria-hidden="true">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10" />
                 <polyline points="12 6 12 12 16 14" />
               </svg>
-              Auto Time-Zone Detection
             </span>
-            <span class="appt-meta-pill">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              </svg>
-              Confidential Briefing
-            </span>
-          </div>
-        </div>
-
-        <!-- Client Relationship Switcher (New vs Existing Client) -->
-        <div class="appt-switcher">
-          <div class="appt-switcher__top">
-            <span class="appt-switcher__prompt">Step 01 &middot; Select Engagement Type</span>
-            <div class="appt-switcher__quick">
-              <span id="switcher-quick-prompt">Already a client?</span>
-              <button type="button" id="switcher-quick-btn" class="appt-switcher__quick-btn" data-target-client="existing">
-                Switch to Review Meeting &rarr;
-              </button>
-            </div>
-          </div>
-
-          <div class="appt-switcher__grid" role="tablist" aria-label="Appointment type">
-            <button type="button" id="tab-client-new" class="appt-client-tab" role="tab" aria-selected="true"
-              aria-controls="zcal-pane-new" data-client-type="new">
-              <span class="appt-client-tab__radio" aria-hidden="true"></span>
-              <span class="appt-client-tab__body">
-                <span class="appt-client-tab__eyebrow">
-                  <span class="appt-client-tab__tag">01 &middot; New Client</span>
-                  <span class="appt-client-tab__pill">Initial Diagnostic</span>
-                </span>
-                <span class="appt-client-tab__title">Strategic Diagnostic Session</span>
-                <span class="appt-client-tab__desc">For prospective organizations seeking a root-cause assessment across operations, workforce, procurement, and margin.</span>
-              </span>
-            </button>
-
-            <button type="button" id="tab-client-existing" class="appt-client-tab" role="tab" aria-selected="false"
-              aria-controls="zcal-pane-existing" data-client-type="existing" tabindex="-1">
-              <span class="appt-client-tab__radio" aria-hidden="true"></span>
-              <span class="appt-client-tab__body">
-                <span class="appt-client-tab__eyebrow">
-                  <span class="appt-client-tab__tag">02 &middot; Already a Client?</span>
-                  <span class="appt-client-tab__pill">Active Mandate</span>
-                </span>
-                <span class="appt-client-tab__title">Existing Client Review Meeting</span>
-                <span class="appt-client-tab__desc">For current client partners scheduling an engagement review, milestone audit, or executive alignment check-in.</span>
-              </span>
-            </button>
-          </div>
-        </div>
-
-        <div class="appt-console">
-          <div class="appt-console__bar">
-            <div class="appt-console__bar-left">
-              <span id="console-marker" class="appt-console__marker" aria-hidden="true"></span>
-              <span id="console-label" class="appt-console__label">Strategic Diagnostic Session</span>
-              <span id="console-sub" class="appt-console__sub">New Client Intake &middot; The Happiness Company Business Solutions Private Limited</span>
-            </div>
-            <a id="console-fallback-link" href="https://zcal.co/i/zgZ2fleP" target="_blank" rel="noopener noreferrer"
-              class="appt-console__fallback">
-              Open scheduler in new tab
+            <span>60–90 Min &middot; Senior Practitioner-Led</span>
+          </li>
+          <li class="rail-spec">
+            <span class="rail-spec__icon" aria-hidden="true">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                <polyline points="15 3 21 3 21 9" />
-                <line x1="10" y1="14" x2="21" y2="3" />
+                stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="23 7 16 12 23 17 23 7" />
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
               </svg>
-            </a>
-          </div>
-
-          <div id="console-context" class="appt-console__context">
-            <span><strong>New Client Calendar:</strong> Book your complimentary 60–90 minute Strategic Diagnostic Session directly below.</span>
-          </div>
-
-          <div class="appt-console__stage">
-            <script type="text/javascript" async src="https://static.zcal.co/embed/v1/embed.js"></script>
-            <div class="appt-widget-stack">
-              <!-- New Client Embed -->
-              <div id="zcal-pane-new" class="appt-widget-pane" role="tabpanel" aria-labelledby="tab-client-new">
-                <div class="zcal-inline-widget"><a href="https://zcal.co/i/zgZ2fleP">Strategic Diagnostic Session - Schedule a meeting</a></div>
-              </div>
-              <!-- Existing Client Embed -->
-              <div id="zcal-pane-existing" class="appt-widget-pane is-hidden" role="tabpanel"
-                aria-labelledby="tab-client-existing" aria-hidden="true" inert>
-                <div class="zcal-inline-widget"><a href="https://zcal.co/i/fg3A13nk">Review Meeting - Schedule a meeting</a></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="appt-console__foot">
-            <div class="appt-console__foot-note">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </span>
+            <span>Private Video Briefing or On-Site Audit</span>
+          </li>
+          <li class="rail-spec">
+            <span class="rail-spec__icon" aria-hidden="true">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
               </svg>
-              <span>All shared operational details remain strictly confidential.</span>
+            </span>
+            <span>Structured Root-Cause Brief &middot; Not a Sales Call</span>
+          </li>
+        </ul>
+
+        <!-- Signature Strict Non-Negotiable NDA Mandate -->
+        <div class="rail-nda" role="note" aria-label="Strict Non-Negotiable NDA Policy">
+          <div class="rail-nda__head">
+            <svg class="rail-nda__shield" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <polyline points="9 12 11 14 15 10" />
+            </svg>
+            <span class="rail-nda__title">Strict NDA Policy</span>
+            <span class="rail-nda__pill">Non-Negotiable</span>
+          </div>
+          <p class="rail-nda__body">Every conversation, operational disclosure, and financial figure shared with us is
+            strictly bound by our non-negotiable Non-Disclosure Protocol&mdash;before, during, and after your session.
+            Zero third-party sharing.</p>
+          <a id="rail-nda-link"
+            href="mailto:business@happinesscompany.in?subject=Request%20for%20Countersigned%20Mutual%20NDA%20%E2%80%94%20Strategic%20Diagnostic%20Session&amp;body=Dear%20Executive%20Desk%20%E2%80%94%20The%20Happiness%20Company%20Business%20Solutions%20Private%20Limited%2C%0D%0A%0D%0APrior%20to%20sharing%20organizational%2C%20operational%2C%20or%20financial%20details%20for%20our%20Strategic%20Diagnostic%20Session%2C%20please%20share%20your%20standard%20Mutual%20Non-Disclosure%20Agreement%20(NDA)%20for%20review%20and%20countersignature.%0D%0A%0D%0AOrganization%20Name%3A%20%5BEnter%20Organization%20Name%5D%0D%0AAuthorized%20Signatory%20%26%20Title%3A%20%5BEnter%20Name%20%26%20Designation%5D%0D%0AScheduled%20%2F%20Preferred%20Session%20Date%3A%20%5BEnter%20Date%20%26%20Time%5D%0D%0ADirect%20Contact%20Number%3A%20%5BEnter%20Phone%20Number%5D%0D%0A%0D%0AThank%20you%2C%0D%0A%5BYour%20Name%5D"
+            class="rail-nda__link">
+            Request countersigned Mutual NDA &rarr;
+          </a>
+        </div>
+
+        <!-- Optional Compact Agenda Drawer -->
+        <details class="rail-agenda">
+          <summary>
+            <span id="rail-agenda-heading">Preview Session Agenda</span>
+            <svg class="rail-agenda__chevron" width="14" height="14" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </summary>
+          <ol id="rail-agenda-list" class="rail-agenda__list"></ol>
+        </details>
+
+        <!-- Direct Executive Desk Footer -->
+        <div class="rail-desk">
+          <div class="rail-desk__label">Direct Executive Desk</div>
+          <div class="rail-desk__links">
+            <a href="mailto:business@happinesscompany.in">business@happinesscompany.in</a>
+            <a href="tel:+919481369078">+91 94813 69078</a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- RIGHT PANE: Crisp Segmented Switcher + Live Zcal Calendar -->
+      <div class="portal-stage">
+        <div class="stage-top">
+          <div class="segment-well" role="tablist" aria-label="Select appointment type">
+            <button type="button" id="tab-client-new" class="segment-btn" role="tab" aria-selected="true"
+              aria-controls="zcal-pane-new" data-client-type="new">
+              <span class="segment-btn__main">
+                <span class="segment-btn__dot" aria-hidden="true"></span>
+                <span class="segment-btn__text">
+                  <span class="segment-btn__kicker">New Client</span>
+                  <span class="segment-btn__label">Strategic Diagnostic Session</span>
+                </span>
+              </span>
+              <span class="segment-btn__badge">60–90 min</span>
+            </button>
+
+            <button type="button" id="tab-client-existing" class="segment-btn" role="tab" aria-selected="false"
+              aria-controls="zcal-pane-existing" data-client-type="existing" tabindex="-1">
+              <span class="segment-btn__main">
+                <span class="segment-btn__dot" aria-hidden="true"></span>
+                <span class="segment-btn__text">
+                  <span class="segment-btn__kicker">Already a Client?</span>
+                  <span class="segment-btn__label">Existing Client Review Meeting</span>
+                </span>
+              </span>
+              <span class="segment-btn__badge">Active Mandate</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="stage-calendar">
+          <script type="text/javascript" async src="https://static.zcal.co/embed/v1/embed.js"></script>
+          <div class="stage-widget-stack">
+            <!-- New Client Embed -->
+            <div id="zcal-pane-new" class="stage-pane" role="tabpanel" aria-labelledby="tab-client-new">
+              <div class="zcal-inline-widget"><a href="https://zcal.co/i/zgZ2fleP">Strategic Diagnostic Session - Schedule a meeting</a></div>
             </div>
-            <div class="appt-console__desk-links">
-              <span>Need custom coordination?</span>
-              <a href="mailto:business@happinesscompany.in">business@happinesscompany.in</a>
-              <a href="tel:+919481369078">+91 94813 69078</a>
+
+            <!-- Existing Client Embed -->
+            <div id="zcal-pane-existing" class="stage-pane is-hidden" role="tabpanel"
+              aria-labelledby="tab-client-existing" aria-hidden="true" inert>
+              <div class="zcal-inline-widget"><a href="https://zcal.co/i/fg3A13nk">Review Meeting - Schedule a meeting</a></div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- ======== SECTION 3: SESSION ARCHITECTURE ======== -->
-    <section id="session-architecture" class="appt-section">
-      <div class="container">
-        <div class="fade-in">
-          <p class="micro-cap">Session Architecture</p>
-          <h2 class="appt-h2">How We Structure Your Diagnostic Session</h2>
-          <p class="appt-lead">We do not spend executive time walking through generic credentials slides. Every session
-            follows a disciplined four-stage diagnostic protocol designed to separate surface symptoms from structural
-            root causes.</p>
-        </div>
-
-        <div class="appt-agenda-grid stagger-group mt-xxl">
-          <article class="appt-agenda-cell">
-            <div class="appt-agenda-cell__top">
-              <span class="appt-agenda-cell__num">01</span>
-              <span class="appt-agenda-cell__time">00–20 Min</span>
-            </div>
-            <h3 class="appt-agenda-cell__title">Operational Friction Mapping</h3>
-            <p class="appt-agenda-cell__desc">We establish your operating baseline—identifying where throughput slows,
-              where clinical or administrative handoffs break down, and which bottlenecks consume leadership bandwidth.</p>
-          </article>
-
-          <article class="appt-agenda-cell">
-            <div class="appt-agenda-cell__top">
-              <span class="appt-agenda-cell__num">02</span>
-              <span class="appt-agenda-cell__time">20–40 Min</span>
-            </div>
-            <h3 class="appt-agenda-cell__title">Workforce &amp; Governance Review</h3>
-            <p class="appt-agenda-cell__desc">We examine decision rights, accountability lines, and frontline team
-              pressure to distinguish true capability gaps from structural workflow flaws.</p>
-          </article>
-
-          <article class="appt-agenda-cell">
-            <div class="appt-agenda-cell__top">
-              <span class="appt-agenda-cell__num">03</span>
-              <span class="appt-agenda-cell__time">40–65 Min</span>
-            </div>
-            <h3 class="appt-agenda-cell__title">Commercial &amp; Margin Leakage</h3>
-            <p class="appt-agenda-cell__desc">We inspect procurement architecture, vendor fragmentation, and recurring
-              consumable inefficiencies where silent unit-cost drag compounds across cycles.</p>
-          </article>
-
-          <article class="appt-agenda-cell">
-            <div class="appt-agenda-cell__top">
-              <span class="appt-agenda-cell__num">04</span>
-              <span class="appt-agenda-cell__time">65–90 Min</span>
-            </div>
-            <h3 class="appt-agenda-cell__title">Sequenced Intervention Blueprint</h3>
-            <p class="appt-agenda-cell__desc">We align on priority order: what must be stabilized first so downstream
-              improvements hold, and whether a formal engagement makes clear economic sense.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======== SECTION 4: STAKEHOLDERS & PREPARATION ======== -->
-    <section class="appt-section appt-section--soft">
-      <div class="container">
-        <div class="appt-brief-grid stagger-group">
-          <div class="appt-brief-panel">
-            <p class="micro-cap">Leadership Participation</p>
-            <h2 class="appt-brief-panel__title">Who Should Attend</h2>
-            <p class="appt-brief-panel__sub">To ensure the session produces actionable clarity rather than preliminary
-              notes, we recommend direct participation from leaders who own operational or commercial outcomes.</p>
-
-            <ul class="appt-role-list">
-              <li class="appt-role-item">
-                <div class="appt-role-item__name">Promoters, Founders &amp; Managing Directors</div>
-                <p class="appt-role-item__desc">Seeking institutional governance, predictable margins, and scalable
-                  operating foundations.</p>
-              </li>
-              <li class="appt-role-item">
-                <div class="appt-role-item__name">Chief Executive &amp; Chief Operating Officers</div>
-                <p class="appt-role-item__desc">Addressing multi-layer operational friction, staff attrition, or
-                  execution drag across departments.</p>
-              </li>
-              <li class="appt-role-item">
-                <div class="appt-role-item__name">Medical Directors &amp; Clinical Leadership</div>
-                <p class="appt-role-item__desc">Aligning care quality, biomedical reliability, and clinical workflow
-                  efficiency without team burnout.</p>
-              </li>
-              <li class="appt-role-item">
-                <div class="appt-role-item__name">CFOs &amp; Heads of Procurement</div>
-                <p class="appt-role-item__desc">Targeting structural cost optimization, GPO leverage, and transparent
-                  vendor consolidation.</p>
-              </li>
-            </ul>
-          </div>
-
-          <div class="appt-brief-panel">
-            <p class="micro-cap">Pre-Session Briefing</p>
-            <h2 class="appt-brief-panel__title">How to Prepare</h2>
-            <p class="appt-brief-panel__sub">No formal presentation deck or audited financials are required. Having
-              concise perspective on three questions maximizes the value of your diagnostic session:</p>
-
-            <ul class="appt-prep-list">
-              <li class="appt-prep-item">
-                <span class="appt-prep-item__idx">01</span>
-                <div class="appt-prep-item__text">
-                  <strong>Primary Pressure Point</strong>
-                  <span>The single operational, workforce, or margin constraint that has persisted despite previous
-                    remedial efforts.</span>
-                </div>
-              </li>
-              <li class="appt-prep-item">
-                <span class="appt-prep-item__idx">02</span>
-                <div class="appt-prep-item__text">
-                  <strong>Organizational Footprint</strong>
-                  <span>High-level context on facility scale, headcount structure, and key departmental
-                    interdependencies.</span>
-                </div>
-              </li>
-              <li class="appt-prep-item">
-                <span class="appt-prep-item__idx">03</span>
-                <div class="appt-prep-item__text">
-                  <strong>12–24 Month Strategic Horizon</strong>
-                  <span>Upcoming inflection points—expansion, unit turnaround, accreditation, or margin recovery
-                    targets.</span>
-                </div>
-              </li>
-            </ul>
-
-            <div class="appt-nda-box">
-              <strong>Mutual NDA Protocol:</strong> Require a signed Non-Disclosure Agreement prior to sharing sensitive
-              operational or procurement metrics? Reference your booked slot via
-              <a href="mailto:business@happinesscompany.in">business@happinesscompany.in</a> and our desk will execute
-              it ahead of the session.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======== SECTION 5: INTEGRATED ENGINEERING LENSES ======== -->
-    <section class="appt-section">
-      <div class="container">
-        <div class="fade-in">
-          <p class="micro-cap">Practice Scope</p>
-          <h2 class="appt-h2">Four Integrated Lenses. One System Diagnosis.</h2>
-          <p class="appt-lead">Organizations rarely experience isolated failures. During your appointment, we diagnose
-            across all four verticals to pinpoint the exact layer where change should begin.</p>
-        </div>
-
-        <div class="appt-lenses stagger-group mt-xxl">
-          <a href="consultancy.html" class="appt-lens-card">
-            <span class="appt-lens-card__code">Vertical 01</span>
-            <h3 class="appt-lens-card__title">Healthcare Engineering &amp; Consultancy</h3>
-            <p class="appt-lens-card__desc">End-to-end operational redesign, biomedical infrastructure alignment, and
-              systems governance built to sustain throughput.</p>
-            <span class="appt-lens-card__more">Explore practice &rarr;</span>
-          </a>
-
-          <a href="training.html" class="appt-lens-card">
-            <span class="appt-lens-card__code">Vertical 02</span>
-            <h3 class="appt-lens-card__title">Corporate Training &amp; Workforce</h3>
-            <p class="appt-lens-card__desc">Behavioral diagnostics, leadership rigor, psychological safety, and
-              frontline capability engineering that reduces attrition.</p>
-            <span class="appt-lens-card__more">Explore practice &rarr;</span>
-          </a>
-
-          <a href="procurement.html" class="appt-lens-card">
-            <span class="appt-lens-card__code">Vertical 03</span>
-            <h3 class="appt-lens-card__title">Strategic Procurement &amp; GPO</h3>
-            <p class="appt-lens-card__desc">Institutional purchasing power, vetted supplier architecture, and resilient
-              supply-chain economics for independent operators.</p>
-            <span class="appt-lens-card__more">Explore practice &rarr;</span>
-          </a>
-
-          <a href="cost-optimization.html" class="appt-lens-card">
-            <span class="appt-lens-card__code">Vertical 04</span>
-            <h3 class="appt-lens-card__title">Cost Optimization</h3>
-            <p class="appt-lens-card__desc">Forensic identification of consumable waste, vendor markups, and silent
-              operational micro-leaks for permanent margin recovery.</p>
-            <span class="appt-lens-card__more">Explore practice &rarr;</span>
+        <div class="stage-foot">
+          <span class="stage-foot__meta">
+            <span class="stage-foot__pulse" aria-hidden="true"></span>
+            <span>Auto time-zone detection &middot; Instant calendar confirmation</span>
+          </span>
+          <a id="stage-fallback-link" href="https://zcal.co/i/zgZ2fleP" target="_blank" rel="noopener noreferrer"
+            class="stage-foot__open">
+            Open scheduler in new tab
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
           </a>
         </div>
       </div>
+
     </section>
-
-    <!-- ======== SECTION 6: EXECUTIVE FAQ ======== -->
-    <section class="appt-section appt-section--soft">
-      <div class="container">
-        <div class="appt-faq-layout">
-          <div class="fade-in">
-            <p class="micro-cap">Clarifications</p>
-            <h2 class="appt-h2">Frequently Asked Questions</h2>
-            <p class="appt-lead">Direct answers on format, senior participation, confidentiality, and post-session
-              outcomes.</p>
-          </div>
-
-          <div class="appt-faq-list fade-in delay-1">
-            <details class="appt-faq-item" open>
-              <summary>
-                <span>Is this a vendor sales call or a genuine diagnostic working session?</span>
-                <svg class="appt-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                  stroke-linecap="round" aria-hidden="true">
-                  <line x1="12" y1="5" x2="12" y2="19" />
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                </svg>
-              </summary>
-              <div class="appt-faq-body">
-                It is strictly a working diagnostic session. We apply the same analytical framework we use in formal
-                engagements to evaluate your current state. If your organization is better served by an internal fix
-                rather than an external mandate, we will state that plainly.
-              </div>
-            </details>
-
-            <details class="appt-faq-item">
-              <summary>
-                <span>Who leads the Strategic Diagnostic Session?</span>
-                <svg class="appt-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                  stroke-linecap="round" aria-hidden="true">
-                  <line x1="12" y1="5" x2="12" y2="19" />
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                </svg>
-              </summary>
-              <div class="appt-faq-body">
-                Sessions are conducted directly by senior engineers and operational practitioners who have managed real
-                hospital floors, biomedical ecosystems, workforce restructuring, and procurement cycles—never junior
-                business development representatives.
-              </div>
-            </details>
-
-            <details class="appt-faq-item">
-              <summary>
-                <span>Can multiple members of our leadership team attend?</span>
-                <svg class="appt-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                  stroke-linecap="round" aria-hidden="true">
-                  <line x1="12" y1="5" x2="12" y2="19" />
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                </svg>
-              </summary>
-              <div class="appt-faq-body">
-                Yes, and we encourage it. Bringing operations, clinical, and finance perspectives into the same session
-                typically surfaces cross-functional misalignments immediately and compresses weeks of internal follow-up.
-                You may include additional guest emails when confirming your slot in the calendar above.
-              </div>
-            </details>
-
-            <details class="appt-faq-item">
-              <summary>
-                <span>What happens after the appointment concludes?</span>
-                <svg class="appt-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                  stroke-linecap="round" aria-hidden="true">
-                  <line x1="12" y1="5" x2="12" y2="19" />
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                </svg>
-              </summary>
-              <div class="appt-faq-body">
-                Within two business days, we share a structured summary of our diagnostic observations and recommended
-                intervention sequence. If a deeper on-site assessment or multi-vertical mandate is appropriate, we
-                outline clear scope, milestones, and measurable yield criteria—with zero pressure to proceed.
-              </div>
-            </details>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======== SECTION 7: DIRECT EXECUTIVE DESK ======== -->
-    <section class="appt-desk-band">
-      <div class="container">
-        <div class="appt-desk-band__grid fade-in">
-          <div>
-            <p class="appt-eyebrow">Direct Executive Desk</p>
-            <h2 class="appt-desk-band__title">Need an On-Site Board Briefing or Multi-Stakeholder Slot?</h2>
-            <p class="appt-desk-band__copy">If your leadership team requires an off-calendar executive window, multi-unit
-              site visit, or pre-briefing NDA coordination, contact our advisory desk directly.</p>
-            <div class="mt-xl">
-              <a href="#booking-desk" class="appt-btn-light">Return to Scheduling Calendar &uarr;</a>
-            </div>
-          </div>
-
-          <div class="appt-desk-band__coords">
-            <div>
-              <p class="appt-coord__label">Advisory Email</p>
-              <p class="appt-coord__val"><a href="mailto:business@happinesscompany.in">business@happinesscompany.in</a></p>
-            </div>
-            <div>
-              <p class="appt-coord__label">Direct Telephone</p>
-              <p class="appt-coord__val"><a href="tel:+919481369078">+91 94813 69078</a></p>
-            </div>
-            <div class="appt-coord--full">
-              <p class="appt-coord__label">Registered Office</p>
-              <p class="appt-coord__val">The Happiness Company Business Solutions Private Limited<br>Kollam, Kerala 691601, India</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
   </main>
 
-  <!-- ======== FOOTER ======== -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="nav-logo">
-            <img src="assets/shared/logoname.png" width="1726" height="140" alt="The Happiness Company Business Solutions Private Limited" loading="lazy" decoding="async">
-          </a>
-          <p>Diagnosing what's actually broken inside independent healthcare organizations, then rebuilding it in the
-            order that makes the fix hold.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Verticals</h4>
-          <ul>
-            <li><a href="consultancy.html">Healthcare Engineering</a></li>
-            <li><a href="training.html">Corporate Training</a></li>
-            <li><a href="procurement.html">Procurement &amp; GPO</a></li>
-            <li><a href="cost-optimization.html">Cost Optimization</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Contact</h4>
-          <ul>
-            <li><a href="https://zcal.co/happinesscompany/client" target="_blank" rel="noopener">Book a Session</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>&copy; 2026 The Happiness Company Business Solutions Private Limited. All rights reserved.<br>CIN: U70200KL2026PTC106724</span>
-        <span>Healthcare Consultancy &amp; Engineering</span>
-      </div>
+  <!-- ======== MINIMALIST CORPORATE LEGAL FOOTER ======== -->
+  <footer class="portal-legal">
+    <div>
+      &copy; 2026 The Happiness Company Business Solutions Private Limited. All rights reserved.
+      <span class="portal-legal__cin">CIN: U70200KL2026PTC106724</span>
     </div>
+    <div class="portal-legal__right">Business Engineering &middot; Kollam, Kerala</div>
   </footer>
 
-  <script src="js/main.js" defer></script>
   <script>
     (function () {
+      function buildNdaMailto(subject, intro) {
+        var body =
+          'Dear Executive Desk \u2014 The Happiness Company Business Solutions Private Limited,\r\n\r\n' +
+          intro + '\r\n\r\n' +
+          'Organization Name: [Enter Organization Name]\r\n' +
+          'Authorized Signatory & Title: [Enter Name & Designation]\r\n' +
+          'Scheduled / Preferred Session Date: [Enter Date & Time]\r\n' +
+          'Direct Contact Number: [Enter Phone Number]\r\n\r\n' +
+          'Thank you,\r\n[Your Name]';
+        return 'mailto:business@happinesscompany.in?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      }
+
       var SESSIONS = {
         new: {
-          label: 'Strategic Diagnostic Session',
-          sub: 'New Client Intake \u00B7 The Happiness Company Business Solutions Private Limited',
+          statusLabel: 'New Client Scheduling',
+          title: 'Strategic Diagnostic Session.',
+          lead: 'A confidential working session with our senior practitioners to diagnose operational friction, workforce alignment, procurement, and margin leakage.',
           url: 'https://zcal.co/i/zgZ2fleP',
-          contextHtml: '<span><strong>New Client Calendar:</strong> Book your complimentary 60\u201390 minute Strategic Diagnostic Session directly below.</span>',
-          quickPrompt: 'Already a client?',
-          quickBtnText: 'Switch to Review Meeting \u2192',
-          quickTarget: 'existing'
+          ndaMailto: buildNdaMailto(
+            'Request for Countersigned Mutual NDA \u2014 Strategic Diagnostic Session',
+            'Prior to sharing organizational, operational, or financial details for our Strategic Diagnostic Session, please share your standard Mutual Non-Disclosure Agreement (NDA) for review and countersignature.'
+          ),
+          agendaHeading: 'Preview Session Agenda',
+          specsHtml:
+            '<li class="rail-spec"><span class="rail-spec__icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><span>60\u201390 Min &middot; Senior Practitioner-Led</span></li>' +
+            '<li class="rail-spec"><span class="rail-spec__icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></span><span>Private Video Briefing or On-Site Audit</span></li>' +
+            '<li class="rail-spec"><span class="rail-spec__icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Structured Root-Cause Brief &middot; Not a Sales Call</span></li>',
+          agenda: [
+            { idx: '01', title: 'Operational Friction Mapping', desc: 'Isolate workflow bottlenecks and execution drag.' },
+            { idx: '02', title: 'Workforce & Governance Review', desc: 'Separate capability gaps from structural design flaws.' },
+            { idx: '03', title: 'Margin & Procurement Leaks', desc: 'Identify vendor markups and consumable inefficiencies.' },
+            { idx: '04', title: 'Sequenced Intervention Plan', desc: 'Align on exact priority order so changes hold.' }
+          ]
         },
         existing: {
-          label: 'Existing Client \u00B7 Review Meeting',
-          sub: 'Active Engagement Desk \u00B7 The Happiness Company Business Solutions Private Limited',
+          statusLabel: 'Active Engagement Desk',
+          title: 'Existing Client Review Meeting.',
+          lead: 'Dedicated check-in with your engagement team to review live operational KPIs, milestone delivery, escalations, and next-phase execution priorities.',
           url: 'https://zcal.co/i/fg3A13nk',
-          contextHtml: '<span><strong>Existing Client Calendar:</strong> Schedule your dedicated Review Meeting for milestone progress, KPI tracking, and next-phase alignment.</span>',
-          quickPrompt: 'Looking to start a new engagement?',
-          quickBtnText: 'Switch to Diagnostic Session \u2192',
-          quickTarget: 'new'
+          ndaMailto: buildNdaMailto(
+            'Request for Countersigned Mutual NDA \u2014 Existing Client Review Meeting',
+            'Ahead of our upcoming Review Meeting, please share a countersigned copy / updated Mutual Non-Disclosure Agreement (NDA) covering the operational or financial disclosures we plan to review.'
+          ),
+          agendaHeading: 'Preview Review Scope',
+          specsHtml:
+            '<li class="rail-spec"><span class="rail-spec__icon rail-spec__icon--existing" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span><span>Live KPI &amp; Margin Yield Checkpoint</span></li>' +
+            '<li class="rail-spec"><span class="rail-spec__icon rail-spec__icon--existing" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span><span>Direct Delivery &amp; Advisory Team Calendar</span></li>' +
+            '<li class="rail-spec"><span class="rail-spec__icon rail-spec__icon--existing" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></span><span>Video Briefing or On-Site Working Review</span></li>',
+          agenda: [
+            { idx: '01', title: 'Milestone Verification', desc: 'Review completed deliverables against engagement baseline.' },
+            { idx: '02', title: 'Operational KPIs & ROI', desc: 'Audit cost recovery, throughput, and retention metrics.' },
+            { idx: '03', title: 'Floor Escalations', desc: 'Unblock cross-functional friction in real time.' },
+            { idx: '04', title: 'Next Sprint Alignment', desc: 'Confirm owners, milestones, and execution window.' }
+          ]
         }
       };
 
@@ -1769,17 +1111,29 @@
       var tabExisting = document.getElementById('tab-client-existing');
       var paneNew = document.getElementById('zcal-pane-new');
       var paneExisting = document.getElementById('zcal-pane-existing');
-      var marker = document.getElementById('console-marker');
-      var labelEl = document.getElementById('console-label');
-      var subEl = document.getElementById('console-sub');
-      var fallbackEl = document.getElementById('console-fallback-link');
-      var contextEl = document.getElementById('console-context');
-      var quickPromptEl = document.getElementById('switcher-quick-prompt');
-      var quickBtnEl = document.getElementById('switcher-quick-btn');
-      var heroExistingTrigger = document.getElementById('hero-existing-trigger');
-      var bookingDesk = document.getElementById('booking-desk');
+      var statusEl = document.getElementById('rail-status');
+      var statusLabelEl = document.getElementById('rail-status-label');
+      var titleEl = document.getElementById('rail-title');
+      var leadEl = document.getElementById('rail-lead');
+      var specsEl = document.getElementById('rail-specs');
+      var agendaHeadingEl = document.getElementById('rail-agenda-heading');
+      var agendaListEl = document.getElementById('rail-agenda-list');
+      var fallbackEl = document.getElementById('stage-fallback-link');
+      var ndaLinkEl = document.getElementById('rail-nda-link');
 
       if (!tabNew || !tabExisting || !paneNew || !paneExisting) return;
+
+      function renderAgenda(type) {
+        var isExisting = type === 'existing';
+        agendaListEl.innerHTML = SESSIONS[type].agenda.map(function (item) {
+          return (
+            '<li class="rail-agenda__item">' +
+            '<span class="rail-agenda__idx' + (isExisting ? ' rail-agenda__idx--existing' : '') + '">' + item.idx + '</span>' +
+            '<div><strong>' + item.title + '</strong><span>' + item.desc + '</span></div>' +
+            '</li>'
+          );
+        }).join('');
+      }
 
       function ensureZcalHydrated(pane) {
         var widget = pane.querySelector('.zcal-inline-widget');
@@ -1794,7 +1148,7 @@
         window.dispatchEvent(new Event('resize'));
       }
 
-      function setClientType(type, options) {
+      function setClientType(type) {
         var isExisting = type === 'existing';
         var cfg = isExisting ? SESSIONS.existing : SESSIONS.new;
 
@@ -1811,22 +1165,17 @@
         paneExisting.setAttribute('aria-hidden', String(!isExisting));
         paneExisting.inert = !isExisting;
 
-        if (marker) marker.classList.toggle('appt-console__marker--existing', isExisting);
-        if (labelEl) labelEl.textContent = cfg.label;
-        if (subEl) subEl.textContent = cfg.sub;
+        if (statusEl) statusEl.classList.toggle('rail-status--existing', isExisting);
+        if (statusLabelEl) statusLabelEl.textContent = cfg.statusLabel;
+        if (titleEl) titleEl.textContent = cfg.title;
+        if (leadEl) leadEl.textContent = cfg.lead;
+        if (specsEl) specsEl.innerHTML = cfg.specsHtml;
+        if (agendaHeadingEl) agendaHeadingEl.textContent = cfg.agendaHeading;
         if (fallbackEl) fallbackEl.setAttribute('href', cfg.url);
-        if (contextEl) contextEl.innerHTML = cfg.contextHtml;
-        if (quickPromptEl) quickPromptEl.textContent = cfg.quickPrompt;
-        if (quickBtnEl) {
-          quickBtnEl.textContent = cfg.quickBtnText;
-          quickBtnEl.setAttribute('data-target-client', cfg.quickTarget);
-        }
+        if (ndaLinkEl) ndaLinkEl.setAttribute('href', cfg.ndaMailto);
 
+        renderAgenda(isExisting ? 'existing' : 'new');
         ensureZcalHydrated(isExisting ? paneExisting : paneNew);
-
-        if (options && options.scroll && bookingDesk) {
-          bookingDesk.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
       }
 
       tabNew.addEventListener('click', function () { setClientType('new'); });
@@ -1843,23 +1192,11 @@
         });
       });
 
-      if (quickBtnEl) {
-        quickBtnEl.addEventListener('click', function () {
-          setClientType(quickBtnEl.getAttribute('data-target-client') || 'existing');
-        });
-      }
-
-      if (heroExistingTrigger) {
-        heroExistingTrigger.addEventListener('click', function (e) {
-          e.preventDefault();
-          setClientType('existing', { scroll: true });
-        });
-      }
-
-      // Support direct deep links: appointments.html?client=existing or #existing-client
       var params = new URLSearchParams(window.location.search);
       if (params.get('client') === 'existing' || window.location.hash === '#existing-client') {
         setClientType('existing');
+      } else {
+        renderAgenda('new');
       }
     })();
   </script>
